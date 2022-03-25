@@ -1,0 +1,39 @@
+.navigation {
+  box-shadow: var(--navbar_shadow);
+  justify-content: space-between;
+}
+.secondary-list {
+  padding: 0 20px;
+}
+.logo-text {
+  margin-left: 1rem;
+  color: var(--Primary_Color);
+  font-family: var(--Logo_Font);
+}
+.quick-link {
+  display: flex;
+  margin-left: 3rem;
+  font-size: 1.25rem;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav-item:hover {
+  color: var(--Primary_Color);
+}
+.searchbox-icon {
+  display: flex;
+  color: var(--Secondary_Color);
+}
+.search-input {
+  width: 100%;
+}
+.search-icon {
+  padding: 0;
+}
+.search-bar {
+  max-width: 20rem;
+}
