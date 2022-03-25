@@ -1,0 +1,17 @@
+:root {
+  --navbar_shadow: 2px 4px 10px var(--Primary_Color_100);
+}
+body {
+  font-family: var(--Lato_Font);
+}
+.nav-fs {
+  font-size: 14px;
+}
+.bd-3{
+    border-radius: 3px;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
