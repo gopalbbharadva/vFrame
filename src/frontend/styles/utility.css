@@ -1,5 +1,6 @@
 :root {
   --navbar_shadow: 2px 4px 10px var(--Primary_Color_100);
+  --roboto-font: "Roboto", sans-serif;
 }
 body {
   font-family: var(--Lato_Font);
@@ -7,11 +8,28 @@ body {
 .nav-fs {
   font-size: 14px;
 }
-.bd-3{
-    border-radius: 3px;
+.pointer {
+  cursor: pointer;
 }
-.flex-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bd-3 {
+  border-radius: 3px;
+}
+.mg-l {
+  margin-left: 3px;
+}
+.mg-top {
+  margin-top: 5px;
+}
+.flex-dir-col {
+  flex-direction: column;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-align-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
