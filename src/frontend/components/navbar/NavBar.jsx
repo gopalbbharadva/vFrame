@@ -15,12 +15,6 @@ export const Navbar = () => {
           <p className="logo-text fs-xlg">vFrame</p>
         </Link>
         <div className="quick-link">
-          <Link to="/">
-            <div className="nav-item mg-hztl-md">
-              <ImHome3 />
-              <small className="nav-fs">Home</small>
-            </div>
-          </Link>
           <Link to="/videolist">
             <div className="nav-item">
               <ImPlay />
