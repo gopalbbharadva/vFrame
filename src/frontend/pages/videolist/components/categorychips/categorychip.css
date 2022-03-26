@@ -1,0 +1,14 @@
+.chip-item {
+  border: 1px solid var(--Primary_Color);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 5px;
+}
+.filled-chip {
+  background-color: var(--Primary_Color);
+  color: var(--Color_White);
+}
+.chip-item:hover {
+  background-color: var(--Primary_Color);
+  color: var(--Color_White);
+}
