@@ -14,9 +14,6 @@
   display: flex;
   flex-direction: column;
 }
-.btn-area button {
-  font-size: 1.2rem;
-}
 .is-secondary {
   background-color: var(--Secondary_Color);
   color: var(--Color_White);
