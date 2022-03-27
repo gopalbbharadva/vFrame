@@ -1,10 +1,14 @@
 import React from "react";
-import { FiUser, FiSearch } from "react-icons/fi";
-import { ImHome3, ImPlay } from "react-icons/im";
+import { FiSearch, FiLogIn, FiLogOut } from "react-icons/fi";
+import { ImPlay } from "react-icons/im";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import { logoutHandler } from "../../helperfunctions/authHandlers";
 import "./Navbar.css";
 
 export const Navbar = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
   return (
     <nav className="navigation pd-md">
       <span className="hamburger-icon">
@@ -39,12 +43,22 @@ export const Navbar = () => {
         />
       </div>
       <div className="nav-right-section">
-        <Link to="/login">
-          <div className="nav-item">
-            <FiUser className="user-icon fs-lg" />
-            <small className="fs-md">Login</small>
+        {isLoggedIn ? (
+          <div
+            onClick={() => logoutHandler(setIsLoggedIn)}
+            className="nav-item pointer"
+          >
+            <FiLogOut className="user-icon fs-lg" />
+            <small className="fs-md">Logout</small>
           </div>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <div className="nav-item pointer">
+              <FiLogIn className="user-icon fs-lg" />
+              <small className="fs-md">Login</small>
+            </div>
+          </Link>
+        )}
       </div>
     </nav>
   );

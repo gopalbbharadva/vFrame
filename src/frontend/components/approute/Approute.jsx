@@ -1,3 +1,4 @@
+import MockmanEs from "mockman-js";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
@@ -21,6 +22,7 @@ export const Approute = () => {
         <Route path="/likes" element={<LikeVideoPage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/watchlater" element={<WatchLaterPage />} />
+        <Route path="/mockman" element={<MockmanEs />}></Route>
       </Routes>
     </>
   );
