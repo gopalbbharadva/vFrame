@@ -9,10 +9,7 @@ export const VideolistPage = () => {
   const { categories, videos } = dataStoreState;
   const { filterState } = useFilter();
   const { category } = filterState;
-
   const filteredVideos = videos.filter((item) => item.category === category);
-
-  console.log(filteredVideos);
 
   return (
     <>
@@ -20,14 +17,16 @@ export const VideolistPage = () => {
         <Sidebar />
         <div className="content-area">
           <div className="category-area">
-            {categories.map((item) => (
-              <CategoryChip videoCategory={item} />
+            {categories.map((item, index) => (
+              <CategoryChip videoCategory={item} key={index} />
             ))}
           </div>
           <div className="video-grid ">
-            {(category === "All" ? videos : filteredVideos).map((item) => (
-              <VideoCard videoItem={item} />
-            ))}
+            {(category === "All" ? videos : filteredVideos).map(
+              (item, index) => (
+                <VideoCard videoItem={item} key={index} />
+              )
+            )}
           </div>
         </div>
       </section>

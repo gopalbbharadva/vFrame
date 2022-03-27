@@ -5,6 +5,9 @@
 body {
   font-family: var(--Lato_Font);
 }
+.main-container{
+  display: flex;
+}
 .nav-fs {
   font-size: 14px;
 }
