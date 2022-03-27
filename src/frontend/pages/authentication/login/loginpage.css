@@ -34,7 +34,7 @@
   padding: 0 1rem;
 }
 .input-primary {
-  border: 3px solid var(--Primary_Color);
+  border: 2px solid var(--Primary_Color);
 }
 .text-or {
   text-align: center;
@@ -72,6 +72,5 @@
 .input {
   width: 90%;
   outline: none;
-  font-size: 1.2rem;
   margin: 0;
 }
