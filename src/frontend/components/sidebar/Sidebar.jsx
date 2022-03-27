@@ -9,8 +9,11 @@ import { IoHomeOutline } from "react-icons/io5";
 import { AiOutlineLike } from "react-icons/ai";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/contextExport";
 
 export const Sidebar = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <div className="sidebar pd-sm">
       <ul className="sidebar-list pd-md">
@@ -32,7 +35,7 @@ export const Sidebar = () => {
             <small>Playlist</small>
           </li>
         </Link>
-        <Link to="/likes">
+        <Link to={isLoggedIn ? "/likes" : "/login"}>
           <li className="sidebar-item flex-center flex-dir-col pointer">
             <AiOutlineLike className="fs-lg" />
             <small>Likes</small>
@@ -44,7 +47,7 @@ export const Sidebar = () => {
             <small>History</small>
           </li>
         </Link>
-        <Link to='/watchlater'>
+        <Link to="/watchlater">
           <li className="sidebar-item flex-center flex-dir-col pointer">
             <MdOutlineWatchLater className="fs-lg" />
             <small className="align-center">Watch Later</small>
