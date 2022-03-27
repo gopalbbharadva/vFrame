@@ -1,0 +1,70 @@
+.video-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.image-container {
+  position: relative;
+  padding: 0;
+}
+.video-time {
+  padding: 3px;
+  font-size: 14px;
+  background-color: var(--Color_Black);
+  color: var(--Color_White);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.video-image {
+  width: 100%;
+}
+.video-body {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+}
+.video-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.video-text small {
+  opacity: 0.9;
+  font-weight: 300;
+  font-family: var(--roboto-font);
+}
+.menu-area {
+  position: relative;
+}
+.menu-button {
+  position: absolute;
+  background: transparent;
+}
+
+.video-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--roboto-font);
+}
+.menu-list {
+  background-color: var(--Primary_Color_100);
+  position: absolute;
+  padding: 0.8rem;
+  top: 11.5rem;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.menu-item {
+  color: var(--Secondary_Hover_Color);
+}
+.menu-item:hover {
+  color: var(--Color_Black);
+}
