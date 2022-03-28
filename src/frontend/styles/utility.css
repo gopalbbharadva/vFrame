@@ -11,6 +11,9 @@ body {
 .nav-fs {
   font-size: 14px;
 }
+.fs-btn {
+  font-size: 1.1rem;
+}
 .pointer {
   cursor: pointer;
 }

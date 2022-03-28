@@ -72,7 +72,6 @@
   border: 0;
   display: flex;
   opacity: 0.9;
-}
 .menu-item button:hover {
   opacity: 1;
 }
