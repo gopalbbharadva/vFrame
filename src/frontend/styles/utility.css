@@ -5,7 +5,7 @@
 body {
   font-family: var(--Lato_Font);
 }
-.main-container{
+.main-container {
   display: flex;
 }
 .nav-fs {
@@ -20,8 +20,14 @@ body {
 .mg-l {
   margin-left: 3px;
 }
+.mg-r {
+  margin-right: 5px;
+}
 .mg-top {
   margin-top: 5px;
+}
+.clr-red {
+  color: var(--Color_Danger_500);
 }
 .flex-dir-col {
   flex-direction: column;

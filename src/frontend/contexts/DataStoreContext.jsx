@@ -7,7 +7,8 @@ const DataStoreContext = createContext();
 const initialState = {
   videos: [],
   categories: [],
-  errors: [],
+  error: "",
+  isInWatchLaer: false,
 };
 
 const DataStoreProvider = ({ children }) => {

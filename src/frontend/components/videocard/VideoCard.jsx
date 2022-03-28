@@ -4,20 +4,39 @@ import { ChannelAvatar } from "../componentExport";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import "./videocard.css";
 import { MdOutlineWatchLater, MdPlaylistPlay } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import {
+  deleteWatchLaterHandler,
+  postWatchLaterHandler,
+} from "../../helperfunctions/watchLaterHandler";
+import { useDataStore } from "../../contexts/DataStoreContext";
 
 export const VideoCard = ({ videoItem }) => {
-  const { _id, title, channel, views, duration, channelAvatar } = videoItem;
-  const imgSrc = getImageUrl(_id);
+  const {
+    _id: videoId,
+    title,
+    channel,
+    isInWatchLater,
+    views,
+    duration,
+    channelAvatar,
+  } = videoItem;
+  const imgSrc = getImageUrl(videoId);
 
   const [showMenu, setShowMenu] = useState(false);
+  const { token } = useAuth();
+  const { dataStoreDispatch } = useDataStore();
 
   return (
     <>
       <div className="video-card pointer">
-        <div className="image-container">
-          <img className="video-image" src={imgSrc} alt={VideoCard.title} />
-          <span className="video-time">{duration}</span>
-        </div>
+        <Link to={`/videolist/${videoId}`}>
+          <div className="image-container">
+            <img className="video-image" src={imgSrc} alt={VideoCard.title} />
+            <span className="video-time">{duration}</span>
+          </div>
+        </Link>
         <div className="video-body mg-vrtl-sm">
           <ChannelAvatar channelImg={channelAvatar} />
           <div className="video-text mg-hztl-sm">
@@ -32,26 +51,51 @@ export const VideoCard = ({ videoItem }) => {
             >
               <BiDotsVerticalRounded />
             </button>
+            {showMenu && (
+              <ul className="menu-list bd-3">
+                <li className="menu-item">
+                  {!isInWatchLater ? (
+                    <button
+                      onClick={() =>
+                        postWatchLaterHandler(
+                          token,
+                          videoItem,
+                          dataStoreDispatch
+                        )
+                      }
+                    >
+                      <MdOutlineWatchLater className="fs-md mg-r" />
+                      Save to Watch later
+                    </button>
+                  ) : (
+                    <button
+                      className="clr-red"
+                      onClick={() =>
+                        deleteWatchLaterHandler(
+                          token,
+                          videoItem,
+                          dataStoreDispatch
+                        )
+                      }
+                    >
+                      <MdOutlineWatchLater className="fs-md mg-r" />
+                      Discard from Watch later
+                    </button>
+                  )}
+                </li>
+                <li className="menu-item mg-top flex-center">
+                  <button
+                    className="flex-center"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    <MdPlaylistPlay className="fs-md mg-r" />
+                    Save to Playlist
+                  </button>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
-        {showMenu && (
-          <ul className="menu-list bd-3">
-            <li
-              onClick={() => setShowMenu(false)}
-              className="menu-item flex-align-start pointer"
-            >
-              <MdOutlineWatchLater className="fs-md" />
-              <p className="mg-l">Save to Watch later</p>
-            </li>
-            <li
-              onClick={() => setShowMenu(false)}
-              className="menu-item mg-top flex-align-start pointer"
-            >
-              <MdPlaylistPlay className="fs-md" />
-              <p className="mg-l">Save to Playlist</p>
-            </li>
-          </ul>
-        )}
       </div>
     </>
   );
