@@ -12,13 +12,14 @@ const initialState = {
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
   const loginToken = JSON.parse(localStorage.getItem("loginToken"));
+  const token = loginToken && loginToken.token;
   const [isLoggedIn, setIsLoggedIn] = useState(
     loginToken && loginToken.isLoggedIn
   );
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, authState, setIsLoggedIn, authDispatch }}
+      value={{ isLoggedIn, authState, token, setIsLoggedIn, authDispatch }}
     >
       {children}
     </AuthContext.Provider>
