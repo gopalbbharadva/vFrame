@@ -8,8 +8,6 @@ export const PlayListPage = () => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
-  console.log("playlist page", isLoggedIn);
-
   useEffect(() => {
     !isLoggedIn && navigate("/login");
   }, [isLoggedIn]);
