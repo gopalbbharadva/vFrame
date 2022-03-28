@@ -5,11 +5,14 @@
 body {
   font-family: var(--Lato_Font);
 }
-.main-container{
+.main-container {
   display: flex;
 }
 .nav-fs {
   font-size: 14px;
+}
+.fs-btn {
+  font-size: 1.1rem;
 }
 .pointer {
   cursor: pointer;
@@ -19,6 +22,9 @@ body {
 }
 .mg-l {
   margin-left: 3px;
+}
+.mg-r {
+  margin-right: 5px;
 }
 .mg-top {
   margin-top: 5px;
