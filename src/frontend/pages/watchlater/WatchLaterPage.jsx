@@ -4,6 +4,7 @@ import { Sidebar } from "../../components/componentExport";
 import { HorizontalVideoCard } from "../../components/HorizontalVideoCard/HorizontalVideoCard";
 import { useAuth } from "../../contexts/contextExport";
 import { useDataStore } from "../../contexts/contextExport";
+import { deleteWatchLaterHandler } from "../../helperfunctions/watchLaterHandler";
 import Watchlater from "../../images/Watchlater.svg";
 import "./watchlaterpage.css";
 
@@ -24,12 +25,12 @@ export const WatchLaterPage = () => {
     <>
       <section className="main-container">
         <Sidebar />
-        <div className="watch-later-grid pd-xlg">
-          <div className="watch-later-info">
+        <div className="feature-video-grid pd-xlg">
+          <div className="fv-info">
             <img
               src={Watchlater}
-              className="wl-intro-image"
-              alt="watch-later-image"
+              className="fv-intro-image"
+              alt="video thumbnail"
             />
             <p className="fs-xlg mg-vrtl-md">Watch later videos</p>
             <p className="fs-md mg-vrtl-sm">
@@ -37,10 +38,15 @@ export const WatchLaterPage = () => {
               {watchLaterVideos.length <= 1 ? " Video" : " Videos"}
             </p>
           </div>
-          <div className="watch-later-videos">
+          <div className="fv-videos">
             {watchLaterVideos.length >= 1 ? (
               watchLaterVideos.map((item) => {
-                return <HorizontalVideoCard videoItem={item} />;
+                return (
+                  <HorizontalVideoCard
+                    deleteHandler={deleteWatchLaterHandler}
+                    videoItem={item}
+                  />
+                );
               })
             ) : (
               <div className="flex-center flex-dir-col">
