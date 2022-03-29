@@ -10,6 +10,7 @@ const initialState = {
   categories: [],
   error: "",
   isInWatchLaer: false,
+  isLiked: false,
 };
 
 const DataStoreProvider = ({ children }) => {

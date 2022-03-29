@@ -1,20 +1,20 @@
-.video-item {
+.feature-video-item {
   display: flex;
   align-items: flex-start;
   border-bottom: 1px solid var(--Primary_Disabled_Color);
   position: relative;
 }
-.video-item:hover {
+.feature-video-item:hover {
   background-color: var(--Primary_Color_100);
 }
-.wl-video-image-container {
+.fv-video-image-container {
   position: relative;
 }
 .video-time {
   bottom: 3px;
   right: 0;
 }
-.wl-video-image {
+.fv-video-image {
   max-width: 8rem;
 }
 .trash-btn {
@@ -26,15 +26,15 @@
 .trash-btn:hover {
   color: var(--Color_Danger_500);
 }
-.wl-text {
+.fv-text {
   width: 100%;
   position: relative;
 }
-.wl-title {
+.fv-title {
   width: 80%;
   font-size: 1.1rem;
   font-family: var(--roboto-font);
 }
-.wl-channel {
+.fv-channel {
   opacity: 0.8;
 }

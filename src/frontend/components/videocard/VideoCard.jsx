@@ -75,7 +75,7 @@ export const VideoCard = ({ videoItem }) => {
                       onClick={() =>
                         deleteWatchLaterHandler(
                           token,
-                          videoItem,
+                          videoItem._id,
                           dataStoreDispatch
                         )
                       }

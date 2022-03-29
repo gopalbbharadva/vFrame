@@ -13,9 +13,6 @@ export const SingleVideo = () => {
   const viedoUrl = `https://www.youtube.com/embed/${videoId}`;
   const currentVideo =
     videos.length !== 0 && videos.find((item) => item._id === videoId);
-  console.log(currentVideo);
-  console.log("videos", videos);
-  console.log("id", videoId);
 
   return (
     <>
