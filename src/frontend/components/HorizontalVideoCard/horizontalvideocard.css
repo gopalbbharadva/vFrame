@@ -1,0 +1,40 @@
+.video-item {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--Primary_Disabled_Color);
+  position: relative;
+}
+.video-item:hover {
+  background-color: var(--Primary_Color_100);
+}
+.wl-video-image-container {
+  position: relative;
+}
+.video-time {
+  bottom: 3px;
+  right: 0;
+}
+.wl-video-image {
+  max-width: 8rem;
+}
+.trash-btn {
+  background: transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.trash-btn:hover {
+  color: var(--Color_Danger_500);
+}
+.wl-text {
+  width: 100%;
+  position: relative;
+}
+.wl-title {
+  width: 80%;
+  font-size: 1.1rem;
+  font-family: var(--roboto-font);
+}
+.wl-channel {
+  opacity: 0.8;
+}

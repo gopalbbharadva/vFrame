@@ -8,11 +8,17 @@ export const dataStoreReducer = (state, action) => {
     case actionTypes.INITIAL_VIDEOS:
       return { ...state, videos: action.payload };
 
-    case actionTypes.CATEGORY_ERROR:
-      return { ...state, errors: [...state.errors, action.payload] };
+    case actionTypes.WATCH_LATER:
+      return {
+        ...state,
+        videos: state.videos.map((video) => ({
+          ...video,
+          isInWatchLater: action.payload.some((item) => item._id === video._id),
+        })),
+      };
 
-    case actionTypes.VIDEO_ERROR:
-      return { ...state, errors: [...state.errors, action.payload] };
+    case actionTypes.API_ERROR:
+      return { ...state, errors: action.payload };
 
     default:
       return state;

@@ -30,8 +30,8 @@ export const loginHandler = async (authDispatch, setIsLoggedIn, navigate) => {
     }
   } catch (error) {
     authDispatch({
-      type: actionTypes.LOGIN_SERVER_ERROR,
-      payload: "API missing!!",
+      type: actionTypes.API_ERROR,
+      payload: "API is not working",
     });
   }
 };
