@@ -11,8 +11,8 @@ body {
 .nav-fs {
   font-size: 14px;
 }
-.fs-btn {
-  font-size: 1.1rem;
+.fs-btw-ml{
+  font-size: 1.2rem;
 }
 .pointer {
   cursor: pointer;
@@ -28,6 +28,9 @@ body {
 }
 .mg-top {
   margin-top: 5px;
+}
+.clr-red {
+  color: var(--Color_Danger_500);
 }
 .flex-dir-col {
   flex-direction: column;
