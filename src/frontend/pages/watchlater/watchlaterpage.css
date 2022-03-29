@@ -1,0 +1,21 @@
+.watch-later-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 20%) minmax(0, 50%);
+  gap: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.wl-intro-image {
+  max-width: 10rem;
+}
+
+@media screen and (max-width: 900px) {
+  .watch-later-grid {
+    grid-template-columns: 1fr;
+    margin: 1rem;
+  }
+  .watch-later-info {
+    border-bottom: 2px solid var(--Primary_Disabled_Color);
+  }
+}

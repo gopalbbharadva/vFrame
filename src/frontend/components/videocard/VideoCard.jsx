@@ -4,13 +4,20 @@ import { ChannelAvatar } from "../componentExport";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import "./videocard.css";
 import { MdOutlineWatchLater, MdPlaylistPlay } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import {
+  deleteWatchLaterHandler,
+  postWatchLaterHandler,
+} from "../../helperfunctions/watchLaterHandler";
+import { useDataStore } from "../../contexts/DataStoreContext";
 
 export const VideoCard = ({ videoItem }) => {
   const {
     _id: videoId,
     title,
     channel,
+    isInWatchLater,
     views,
     duration,
     channelAvatar,
@@ -18,6 +25,9 @@ export const VideoCard = ({ videoItem }) => {
   const imgSrc = getImageUrl(videoId);
 
   const [showMenu, setShowMenu] = useState(false);
+  const { token } = useAuth();
+  const { dataStoreDispatch } = useDataStore();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -42,29 +52,52 @@ export const VideoCard = ({ videoItem }) => {
             >
               <BiDotsVerticalRounded />
             </button>
+            {showMenu && (
+              <ul className="menu-list bd-3">
+                <li className="menu-item">
+                  {!isInWatchLater ? (
+                    <button
+                      onClick={() =>
+                        postWatchLaterHandler(
+                          token,
+                          videoItem,
+                          dataStoreDispatch,
+                          navigate
+                        )
+                      }
+                    >
+                      <MdOutlineWatchLater className="fs-md mg-r" />
+                      Save to Watch later
+                    </button>
+                  ) : (
+                    <button
+                      className="clr-red"
+                      onClick={() =>
+                        deleteWatchLaterHandler(
+                          token,
+                          videoItem,
+                          dataStoreDispatch
+                        )
+                      }
+                    >
+                      <MdOutlineWatchLater className="fs-md mg-r" />
+                      Discard from Watch later
+                    </button>
+                  )}
+                </li>
+                <li className="menu-item mg-top flex-center">
+                  <button
+                    className="flex-center"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    <MdPlaylistPlay className="fs-md mg-r" />
+                    Save to Playlist
+                  </button>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
-        {showMenu && (
-          <ul className="menu-list bd-3">
-            <li className="menu-item">
-              <button
-                onClick={() => setShowMenu(false)}
-              >
-                <MdOutlineWatchLater className="fs-md mg-r" />
-                Save to Watch later
-              </button>
-            </li>
-            <li className="menu-item mg-top flex-center">
-              <button
-                className="flex-center"
-                onClick={() => setShowMenu(false)}
-              >
-                <MdPlaylistPlay className="fs-md mg-r" />
-                Save to Playlist
-              </button>
-            </li>
-          </ul>
-        )}
       </div>
     </>
   );
