@@ -14,8 +14,7 @@ export const WatchLaterPage = () => {
   const navigate = useNavigate();
   const { dataStoreState } = useDataStore();
   const { videos } = dataStoreState;
-  const watchLaterVideos =
-    videos && videos.filter((item) => item.isInWatchLater);
+  const watchLaterVideos = videos?.filter((item) => item.isInWatchLater);
 
   useEffect(() => {
     !isLoggedIn && navigate("/login");

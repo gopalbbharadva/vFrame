@@ -13,7 +13,7 @@ export const LikeVideoPage = () => {
   const navigate = useNavigate();
   const { dataStoreState } = useDataStore();
   const { videos } = dataStoreState;
-  const likedVideos = videos && videos.filter((item) => item.isLiked);
+  const likedVideos = videos?.filter((item) => item.isLiked);
 
   useEffect(() => {
     !isLoggedIn && navigate("/login");

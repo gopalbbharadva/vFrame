@@ -1,8 +1,6 @@
 import { actionTypes } from "./actionTypes";
 
 export const dataStoreReducer = (state, action) => {
-
-  console.log('inside reducer',state.videos)
   switch (action.type) {
     case actionTypes.INITIAL_CATEGORIES:
       return { ...state, categories: action.payload };
