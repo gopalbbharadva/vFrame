@@ -1,11 +1,8 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { useDataStore } from "../../contexts/DataStoreContext";
+import { useAuth, useDataStore } from "../../contexts/contextExport";
 import { getImageUrl } from "../../helperfunctions/getImageUrl";
-import { deleteLikeHandler } from "../../helperfunctions/likeHandler";
-import { deleteWatchLaterHandler } from "../../helperfunctions/watchLaterHandler";
 import "./horizontalvideocard.css";
 
 export const HorizontalVideoCard = ({ videoItem, deleteHandler }) => {
