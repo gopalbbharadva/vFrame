@@ -36,7 +36,8 @@ export const loginHandler = async (authDispatch, setIsLoggedIn, navigate) => {
   }
 };
 
-export const logoutHandler = (setIsLoggedIn) => {
+export const logoutHandler = (setIsLoggedIn, navigate) => {
   localStorage.removeItem("loginToken");
   setIsLoggedIn(false);
+  navigate("/videolist");
 };
