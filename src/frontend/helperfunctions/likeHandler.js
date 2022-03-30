@@ -12,7 +12,7 @@ export const getLikeHandler = async (token, dataStoreDispatch) => {
     if (res.status === 200) {
       dataStoreDispatch({
         type: actionTypes.LIKE_VIDEO,
-        paylaod: res.data.likes,
+        payload: res.data.likes,
       });
     }
   } catch (error) {
