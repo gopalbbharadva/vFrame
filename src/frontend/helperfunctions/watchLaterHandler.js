@@ -34,7 +34,6 @@ export const postWatchLaterHandler = async (
     try {
       const res = await postWatchLaterService(token, videoItem);
       if (res.status === 201) {
-        console.log(res.data.watchlater);
         dataStoreDispatch({
           type: actionTypes.WATCH_LATER,
           payload: res.data.watchlater,

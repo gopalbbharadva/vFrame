@@ -15,4 +15,7 @@ export const actionTypes = {
 
   // watch later actions
   WATCH_LATER: "WATCH_LATER",
+
+  // likes actions
+  LIKE_VIDEO: "LIKE_VIDEO",
 };

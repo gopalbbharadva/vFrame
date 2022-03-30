@@ -9,7 +9,8 @@ const initialState = {
   videos: [],
   categories: [],
   error: "",
-  isInWatchLaer: false,
+  isInWatchLater: false,
+  isLiked: false,
 };
 
 const DataStoreProvider = ({ children }) => {

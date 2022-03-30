@@ -11,8 +11,11 @@ body {
 .nav-fs {
   font-size: 14px;
 }
-.fs-btw-ml{
+.fs-btw-ml {
   font-size: 1.2rem;
+}
+.bg-transparent {
+  background: transparent;
 }
 .pointer {
   cursor: pointer;
