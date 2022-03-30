@@ -26,6 +26,15 @@ export const dataStoreReducer = (state, action) => {
         })),
       };
 
+    case actionTypes.HISTORY_VIDEO:
+      return {
+        ...state,
+        videos: state.videos.map((video) => ({
+          ...video,
+          isInHistory: action.payload.some((item) => item._id === video._id),
+        })),
+      };
+
     case actionTypes.API_ERROR:
       return { ...state, errors: action.payload };
 

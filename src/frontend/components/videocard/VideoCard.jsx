@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import "./videocard.css";
 import { getImageUrl } from "../../helperfunctions/getImageUrl";
 import { ChannelAvatar } from "../componentExport";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import "./videocard.css";
 import { MdOutlineWatchLater, MdPlaylistPlay } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth, useDataStore } from "../../contexts/contextExport";
 import {
   deleteWatchLaterHandler,
   postWatchLaterHandler,
 } from "../../helperfunctions/watchLaterHandler";
-import { useDataStore } from "../../contexts/DataStoreContext";
+import { postHistoryHandler } from "../../helperfunctions/histroryHandler";
 
 export const VideoCard = ({ videoItem }) => {
   const {
@@ -32,7 +32,12 @@ export const VideoCard = ({ videoItem }) => {
   return (
     <>
       <div className="video-card pointer">
-        <Link to={`/videolist/${videoId}`}>
+        <Link
+          to={`/videolist/${videoId}`}
+          onClick={() =>
+            postHistoryHandler(token, videoItem, dataStoreDispatch)
+          }
+        >
           <div className="image-container">
             <img className="video-image" src={imgSrc} alt={VideoCard.title} />
             <span className="video-time">{duration}</span>

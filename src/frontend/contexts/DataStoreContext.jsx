@@ -11,6 +11,7 @@ const initialState = {
   error: "",
   isInWatchLater: false,
   isLiked: false,
+  isInHistory: false,
 };
 
 const DataStoreProvider = ({ children }) => {

@@ -18,4 +18,7 @@ export const actionTypes = {
 
   // likes actions
   LIKE_VIDEO: "LIKE_VIDEO",
+
+  // history actions
+  HISTORY_VIDEO: "HISTORY_VIDEO",
 };
