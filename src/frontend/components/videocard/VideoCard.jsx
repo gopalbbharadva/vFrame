@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./videocard.css";
 import { getImageUrl } from "../../helperfunctions/getImageUrl";
 import { ChannelAvatar } from "../componentExport";
-import { BiDotsVerticalRounded } from "react-icons/bi";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdOutlineWatchLater, MdPlaylistPlay } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth, useDataStore } from "../../contexts/contextExport";
@@ -11,6 +11,8 @@ import {
   postWatchLaterHandler,
 } from "../../helperfunctions/watchLaterHandler";
 import { postHistoryHandler } from "../../helperfunctions/histroryHandler";
+import { PlaylistModal } from "../playlistmodal/PlaylistModal";
+import { useClickOutside } from "../../Hooks/useClickOutside";
 
 export const VideoCard = ({ videoItem }) => {
   const {
@@ -24,13 +26,33 @@ export const VideoCard = ({ videoItem }) => {
   } = videoItem;
   const imgSrc = getImageUrl(videoId);
 
+  const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { token } = useAuth();
   const { dataStoreDispatch } = useDataStore();
   const navigate = useNavigate();
 
+  const domRef = useClickOutside(() => {
+    setShowMenu(false);
+  });
+
+  const modalRef = useClickOutside(() => {
+    setShowModal(false);
+  });
+
+  const checkLogin = () => {
+    token ? setShowModal(true) : navigate("/login");
+  };
+
   return (
     <>
+      {showModal && (
+        <PlaylistModal
+          modalRef={modalRef}
+          setShowModal={setShowModal}
+          playListVideo={videoItem}
+        />
+      )}
       <div className="video-card pointer">
         <Link
           to={`/videolist/${videoId}`}
@@ -50,12 +72,12 @@ export const VideoCard = ({ videoItem }) => {
             <small className="video-channel-title mg-top">{channel}</small>
             <small className="mg-top">{views} views</small>
           </div>
-          <div className="menu-area">
+          <div ref={domRef} className="menu-area">
             <button
-              className="menu-button fs-lg pointer"
               onClick={() => setShowMenu(!showMenu)}
+              className="menu-button pointer"
             >
-              <BiDotsVerticalRounded />
+              <BsThreeDotsVertical />
             </button>
             {showMenu && (
               <ul className="menu-list bd-3">
@@ -91,10 +113,7 @@ export const VideoCard = ({ videoItem }) => {
                   )}
                 </li>
                 <li className="menu-item mg-top flex-center">
-                  <button
-                    className="flex-center"
-                    onClick={() => setShowMenu(false)}
-                  >
+                  <button className="flex-center" onClick={checkLogin}>
                     <MdPlaylistPlay className="fs-md mg-r" />
                     Save to Playlist
                   </button>

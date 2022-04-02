@@ -10,6 +10,7 @@ import {
   HistoryPage,
   WatchLaterPage,
 } from "../../pages/pageExport";
+import { PlayListVideosPage } from "../../pages/PlayListVideos/PlayListVideosPage";
 import { SingleVideo } from "../../pages/singlevideo/SingleVideo";
 
 export const Approute = () => {
@@ -25,6 +26,10 @@ export const Approute = () => {
         <Route path="/watchlater" element={<WatchLaterPage />} />
         <Route path="/mockman" element={<MockmanEs />}></Route>
         <Route path="/videolist/:videoId" element={<SingleVideo />}></Route>
+        <Route
+          path="/playlist/:playListId"
+          element={<PlayListVideosPage />}
+        ></Route>
       </Routes>
     </>
   );

@@ -38,6 +38,15 @@ export const dataStoreReducer = (state, action) => {
     case actionTypes.API_ERROR:
       return { ...state, errors: action.payload };
 
+    case actionTypes.DATASTORE_CLEAR:
+      return {
+        ...state,
+        isInWatchLater: false,
+        isLiked: false,
+        isInHistory: false,
+        errors: "",
+      };
+
     default:
       return state;
   }

@@ -7,8 +7,9 @@ import "./videolistpage.css";
 export const VideolistPage = () => {
   const { dataStoreState } = useDataStore();
   const { categories, videos } = dataStoreState;
-  const { filterState } = useFilter();
-  const { category } = filterState;
+  const {
+    filterState: { category },
+  } = useFilter();
   const filteredVideos = videos.filter((item) => item.category === category);
 
   return (

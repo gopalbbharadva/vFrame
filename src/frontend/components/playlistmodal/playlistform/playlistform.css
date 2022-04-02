@@ -1,0 +1,9 @@
+.playlist-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-top: 1px solid var(--Secondary_Border_Color);
+}
+.playlist-input {
+  border: none;
+}
