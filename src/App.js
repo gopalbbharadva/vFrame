@@ -1,8 +1,5 @@
 import "./App.css";
-import {
-  Approute,
-  Navbar,
-} from "./frontend/components/componentExport";
+import { Approute, Navbar } from "./frontend/components/componentExport";
 
 function App() {
   return (
