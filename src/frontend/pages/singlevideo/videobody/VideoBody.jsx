@@ -1,5 +1,6 @@
 import React from "react";
 import "./videobody.css";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineLike, AiTwotoneLike } from "react-icons/ai";
 import {
   MdOutlineShare,
@@ -15,12 +16,15 @@ import {
   deleteWatchLaterHandler,
   postWatchLaterHandler,
 } from "../../../helperfunctions/watchLaterHandler";
-import { useNavigate } from "react-router-dom";
 
-export const VideoBody = ({ currentVideo }) => {
+export const VideoBody = ({ currentVideo, setShowModal }) => {
   const { token } = useAuth();
   const { dataStoreDispatch } = useDataStore();
   const navigate = useNavigate();
+
+  const checkLogin = () => {
+    token ? setShowModal(true) : navigate("/login");
+  };
 
   return (
     <div className="video-description">
@@ -88,7 +92,10 @@ export const VideoBody = ({ currentVideo }) => {
           )}
         </li>
         <li className="mg-sm">
-          <button className="flex-center flex-dir-col bg-transparent">
+          <button
+            onClick={checkLogin}
+            className="flex-center flex-dir-col bg-transparent"
+          >
             <MdPlaylistPlay className="fs-lg" />
             <small>Play List</small>
           </button>

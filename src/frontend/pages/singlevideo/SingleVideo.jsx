@@ -1,17 +1,27 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useDataStore } from "../../contexts/contextExport";
-import { NoteForm } from "./components/note/NoteForm";
 import "./Singlevideo.css";
+import { useParams } from "react-router-dom";
+import { PlaylistModal } from "../../components/playlistmodal/PlaylistModal";
+import { useDataStore, usePlaylist } from "../../contexts/contextExport";
+import { NoteForm } from "./components/note/NoteForm";
 import { VideoBody } from "./videobody/VideoBody";
+import { getVideo } from "../../helperfunctions/getVideo";
+import { useClickOutside } from "../../Hooks/useClickOutside";
 
 export const SingleVideo = () => {
-  const { dataStoreState } = useDataStore();
-  const { videos } = dataStoreState;
+  const {
+    dataStoreState: { videos },
+  } = useDataStore();
   const { videoId } = useParams();
-  const viedoUrl = `https://www.youtube.com/embed/${videoId}`;
+  const viedoUrl = getVideo(videoId);
   const currentVideo =
     videos.length !== 0 && videos.find((item) => item._id === videoId);
+
+  const { showModal, setShowModal } = usePlaylist();
+
+  const modalRef = useClickOutside(() => {
+    setShowModal(false);
+  });
 
   return (
     <>
@@ -28,10 +38,17 @@ export const SingleVideo = () => {
               allowfullscreen
             ></iframe>
           </div>
-          <VideoBody currentVideo={currentVideo} />
+          <VideoBody setShowModal={setShowModal} currentVideo={currentVideo} />
         </div>
         <NoteForm />
       </div>
+      {showModal && (
+        <PlaylistModal
+          modalRef={modalRef}
+          setShowModal={setShowModal}
+          playListVideo={currentVideo}
+        />
+      )}
     </>
   );
 };
