@@ -3,7 +3,6 @@ import { PlaylistForm } from "./playlistform/PlaylistForm";
 import { PlaylistItem } from "./playlistitem/PlaylistItem";
 import { VscClose } from "react-icons/vsc";
 import "./playlistmodal.css";
-import { useClickOutside } from "../../Hooks/useClickOutside";
 
 export const PlaylistModal = ({ playListVideo, setShowModal, modalRef }) => {
   const [showPlaylistForm, setShowPlaylistForm] = useState(false);

@@ -36,6 +36,10 @@ export const VideoCard = ({ videoItem }) => {
     setShowMenu(false);
   });
 
+  const modalRef = useClickOutside(() => {
+    setShowModal(false);
+  });
+
   const checkLogin = () => {
     token ? setShowModal(true) : navigate("/login");
   };
@@ -43,7 +47,11 @@ export const VideoCard = ({ videoItem }) => {
   return (
     <>
       {showModal && (
-        <PlaylistModal setShowModal={setShowModal} playListVideo={videoItem} />
+        <PlaylistModal
+          modalRef={modalRef}
+          setShowModal={setShowModal}
+          playListVideo={videoItem}
+        />
       )}
       <div className="video-card pointer">
         <Link
