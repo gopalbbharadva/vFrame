@@ -36,8 +36,15 @@ export const loginHandler = async (authDispatch, setIsLoggedIn, navigate) => {
   }
 };
 
-export const logoutHandler = (setIsLoggedIn, navigate) => {
+export const logoutHandler = (
+  setIsLoggedIn,
+  navigate,
+  playListDispatch,
+  dataStoreDispatch
+) => {
   localStorage.removeItem("loginToken");
   setIsLoggedIn(false);
+  playListDispatch({ type: actionTypes.PLAYLIST_CLEAR });
+  dataStoreDispatch({ type: actionTypes.DATASTORE_CLEAR });
   navigate("/videolist");
 };
