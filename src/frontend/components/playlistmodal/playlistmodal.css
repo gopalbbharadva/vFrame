@@ -1,0 +1,23 @@
+.modal-container {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: var(--Modal_Bg_Color);
+}
+.modal {
+  width: 15rem;
+  background-color: var(--Color_White);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--Secondary_Border_Color);
+}
+.create-btn {
+  margin-top: 10px;
+  border-top: 1px solid var(--Secondary_Border_Color);
+}

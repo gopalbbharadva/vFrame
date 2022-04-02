@@ -1,0 +1,6 @@
+.pl-label {
+  user-select: none;
+}
+.pl-label input {
+  vertical-align: middle;
+}

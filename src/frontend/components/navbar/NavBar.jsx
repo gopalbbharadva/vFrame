@@ -2,13 +2,18 @@ import React from "react";
 import { FiSearch, FiLogIn, FiLogOut } from "react-icons/fi";
 import { ImPlay } from "react-icons/im";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { useDataStore } from "../../contexts/DataStoreContext";
+import {
+  useAuth,
+  usePlaylist,
+  useDataStore,
+} from "../../contexts/contextExport";
 import { logoutHandler } from "../../helperfunctions/authHandlers";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { playListDispatch } = usePlaylist();
+  const { dataStoreDispatch } = useDataStore();
   const navigate = useNavigate();
 
   return (
@@ -47,7 +52,14 @@ export const Navbar = () => {
       <div className="nav-right-section">
         {isLoggedIn ? (
           <div
-            onClick={() => logoutHandler(setIsLoggedIn, navigate)}
+            onClick={() =>
+              logoutHandler(
+                setIsLoggedIn,
+                navigate,
+                playListDispatch,
+                dataStoreDispatch
+              )
+            }
             className="nav-item pointer"
           >
             <FiLogOut className="user-icon fs-lg" />
