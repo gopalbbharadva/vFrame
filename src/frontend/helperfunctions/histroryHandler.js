@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { actionTypes } from "../reducers/actionTypes";
 import {
   clearHistoryService,
@@ -43,14 +44,20 @@ export const postHistoryHandler = async (token, video, dataStoreDispatch) => {
 export const deleteHistoryHandler = async (
   token,
   videoId,
-  dataStoreDispatch
+  dataStoreDispatch,
+  skip1,
+  skip2,
+  toastProps
 ) => {
   try {
     const res = await deletHistoryService(token, videoId);
-    dataStoreDispatch({
-      type: actionTypes.HISTORY_VIDEO,
-      payload: res.data.history,
-    });
+    if (res.status === 200) {
+      dataStoreDispatch({
+        type: actionTypes.HISTORY_VIDEO,
+        payload: res.data.history,
+      });
+      toast("Removed from History", toastProps);
+    }
   } catch (error) {
     dataStoreDispatch({
       type: actionTypes.API_ERROR,
@@ -59,7 +66,11 @@ export const deleteHistoryHandler = async (
   }
 };
 
-export const clearHistoryHandler = async (token, dataStoreDispatch) => {
+export const clearHistoryHandler = async (
+  token,
+  dataStoreDispatch,
+  toastProps
+) => {
   try {
     const res = await clearHistoryService(token);
     if (res.status === 200) {
@@ -67,6 +78,7 @@ export const clearHistoryHandler = async (token, dataStoreDispatch) => {
         type: actionTypes.HISTORY_VIDEO,
         payload: res.data.history,
       });
+      toast.success("Cleared history", toastProps);
     }
   } catch (error) {
     dataStoreDispatch({

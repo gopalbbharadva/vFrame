@@ -1,19 +1,20 @@
 import React from "react";
 import { FiSearch, FiLogIn, FiLogOut } from "react-icons/fi";
 import { ImPlay } from "react-icons/im";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   useAuth,
   usePlaylist,
   useDataStore,
 } from "../../contexts/contextExport";
 import { logoutHandler } from "../../helperfunctions/authHandlers";
+import { setActiveLink } from "../../helperfunctions/setActieLink";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const { playListDispatch } = usePlaylist();
-  const { dataStoreDispatch } = useDataStore();
+  const { dataStoreDispatch, toastProps } = useDataStore();
   const navigate = useNavigate();
 
   return (
@@ -26,12 +27,15 @@ export const Navbar = () => {
           <p className="logo-text fs-xlg">vFrame</p>
         </Link>
         <div className="quick-link">
-          <Link to="/videolist">
+          <NavLink
+            style={(activeObject) => setActiveLink(activeObject)}
+            to="/videolist"
+          >
             <div className="nav-item">
               <ImPlay />
               <small className="nav-fs">Watch Now</small>
             </div>
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="search-icon">
@@ -57,7 +61,8 @@ export const Navbar = () => {
                 setIsLoggedIn,
                 navigate,
                 playListDispatch,
-                dataStoreDispatch
+                dataStoreDispatch,
+                toastProps
               )
             }
             className="nav-item pointer"

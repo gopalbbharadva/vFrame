@@ -4,7 +4,11 @@ import { FiTrash } from "react-icons/fi";
 import { MdPlaylistPlay } from "react-icons/md";
 import "./playlistcard.css";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { useAuth, usePlaylist } from "../../../../contexts/contextExport";
+import {
+  useAuth,
+  usePlaylist,
+  useDataStore,
+} from "../../../../contexts/contextExport";
 import { deletePlayListHandler } from "../../../../helperfunctions/playListHandler";
 import { useClickOutside } from "../../../../Hooks/useClickOutside";
 import Playlist from "../../../../images/Playlist.svg";
@@ -16,6 +20,7 @@ export const PlaylistCard = ({ playListItem }) => {
   const menuRef = useClickOutside(() => {
     setShowMenu(false);
   });
+  const { toastProps } = useDataStore();
   const { playListDispatch } = usePlaylist();
 
   return (
@@ -46,7 +51,12 @@ export const PlaylistCard = ({ playListItem }) => {
                 <div className="menu-item">
                   <button
                     onClick={() =>
-                      deletePlayListHandler(token, playListId, playListDispatch)
+                      deletePlayListHandler(
+                        token,
+                        playListId,
+                        playListDispatch,
+                        toastProps
+                      )
                     }
                     className="clr-red"
                   >

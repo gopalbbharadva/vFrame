@@ -9,6 +9,7 @@ import Watchlater from "../../images/Watchlater.svg";
 export const WatchLaterPage = () => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { toastProps } = useDataStore();
   const {
     dataStoreState: { videos },
   } = useDataStore();
@@ -41,6 +42,7 @@ export const WatchLaterPage = () => {
                 return (
                   <HorizontalVideoCard
                     key={index}
+                    toastProps={toastProps}
                     deleteHandler={deleteWatchLaterHandler}
                     videoItem={item}
                   />

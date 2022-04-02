@@ -1,7 +1,13 @@
+import { toast } from "react-hot-toast";
 import { actionTypes } from "../reducers/actionTypes";
 import { loginService } from "../services/authService";
 
-export const loginHandler = async (authDispatch, setIsLoggedIn, navigate) => {
+export const loginHandler = async (
+  authDispatch,
+  setIsLoggedIn,
+  navigate,
+  toastProps
+) => {
   authDispatch({
     type: actionTypes.SET_DUMMY_DATA,
     payload: {
@@ -19,6 +25,7 @@ export const loginHandler = async (authDispatch, setIsLoggedIn, navigate) => {
           isLoggedIn: true,
         })
       );
+      toast.success("User logged in!!", toastProps);
       setIsLoggedIn(true);
       navigate("/videolist");
       authDispatch({ type: actionTypes.CLEAR_FORM });
@@ -40,11 +47,13 @@ export const logoutHandler = (
   setIsLoggedIn,
   navigate,
   playListDispatch,
-  dataStoreDispatch
+  dataStoreDispatch,
+  toastProps
 ) => {
   localStorage.removeItem("loginToken");
   setIsLoggedIn(false);
   playListDispatch({ type: actionTypes.PLAYLIST_CLEAR });
   dataStoreDispatch({ type: actionTypes.DATASTORE_CLEAR });
+  toast.success("You logged out successfully", toastProps);
   navigate("/videolist");
 };

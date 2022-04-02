@@ -12,7 +12,7 @@ import History from "../../images/History.svg";
 export const HistoryPage = () => {
   const { isLoggedIn, token } = useAuth();
   const navigate = useNavigate();
-  const { dataStoreState, dataStoreDispatch } = useDataStore();
+  const { dataStoreState, dataStoreDispatch, toastProps } = useDataStore();
   const { videos } = dataStoreState;
   const historyVideos = videos?.filter((item) => item.isInHistory);
 
@@ -37,7 +37,9 @@ export const HistoryPage = () => {
               {historyVideos.length <= 1 ? " Video" : " Videos"}
             </p>
             <button
-              onClick={() => clearHistoryHandler(token, dataStoreDispatch)}
+              onClick={() =>
+                clearHistoryHandler(token, dataStoreDispatch, toastProps)
+              }
               className="btn is-solid is-outline fs-btw-ml"
             >
               Clear History
@@ -49,6 +51,7 @@ export const HistoryPage = () => {
                 return (
                   <HorizontalVideoCard
                     key={index}
+                    toastProps={toastProps}
                     deleteHandler={deleteHistoryHandler}
                     videoItem={item}
                   />

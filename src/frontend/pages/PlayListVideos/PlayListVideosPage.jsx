@@ -3,12 +3,13 @@ import { Sidebar } from "../../components/componentExport";
 import "./playlistvideos.css";
 import Playlist from "../../images/Playlist.svg";
 import { Link, useParams } from "react-router-dom";
-import { usePlaylist } from "../../contexts/PlaylistContext";
+import { usePlaylist, useDataStore } from "../../contexts/contextExport";
 import { HorizontalVideoCard } from "../../components/HorizontalVideoCard/HorizontalVideoCard";
 import { deletePlayListVideoHandler } from "../../helperfunctions/playListHandler";
 
 export const PlayListVideosPage = () => {
   const { playListId } = useParams();
+  const { toastProps } = useDataStore();
   const {
     playListState: { playLists },
   } = usePlaylist();
@@ -43,6 +44,7 @@ export const PlayListVideosPage = () => {
             videos.map((item) => {
               return (
                 <HorizontalVideoCard
+                  toastProps={toastProps}
                   deleteHandler={deletePlayListVideoHandler}
                   videoItem={item}
                   playListId={playListId}
