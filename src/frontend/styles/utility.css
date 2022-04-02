@@ -1,6 +1,7 @@
 :root {
   --navbar_shadow: 2px 4px 10px var(--Primary_Color_100);
   --roboto-font: "Roboto", sans-serif;
+  --Modal_Bg_Color: rgba(0, 0, 0, 0.6);
 }
 body {
   font-family: var(--Lato_Font);
@@ -30,7 +31,7 @@ body {
   margin-right: 5px;
 }
 .mg-top {
-  margin-top: 5px;
+  margin-top: 1px;
 }
 .clr-red {
   color: var(--Color_Danger_500);
