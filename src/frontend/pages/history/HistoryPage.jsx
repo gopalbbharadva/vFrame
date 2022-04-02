@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Sidebar } from "../../components/componentExport";
-import { HorizontalVideoCard } from "../../components/HorizontalVideoCard/HorizontalVideoCard";
-import { useAuth, useDataStore } from "../../contexts//contextExport";
-import { clearHistoryHandler, deleteHistoryHandler } from "../../helperfunctions/histroryHandler";
-import History from "../../images/History.svg";
 import "./historypage.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Sidebar, HorizontalVideoCard } from "../../components/componentExport";
+import { useAuth, useDataStore } from "../../contexts//contextExport";
+import {
+  clearHistoryHandler,
+  deleteHistoryHandler,
+} from "../../helperfunctions/histroryHandler";
+import History from "../../images/History.svg";
 
 export const HistoryPage = () => {
   const { isLoggedIn, token } = useAuth();
@@ -43,9 +45,10 @@ export const HistoryPage = () => {
           </div>
           <div className="fv-videos">
             {historyVideos.length >= 1 ? (
-              historyVideos.map((item) => {
+              historyVideos.map((item, index) => {
                 return (
                   <HorizontalVideoCard
+                    key={index}
                     deleteHandler={deleteHistoryHandler}
                     videoItem={item}
                   />

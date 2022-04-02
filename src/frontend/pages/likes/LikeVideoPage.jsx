@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Sidebar } from "../../components/componentExport";
-import { HorizontalVideoCard } from "../../components/HorizontalVideoCard/HorizontalVideoCard";
+import { Sidebar, HorizontalVideoCard } from "../../components/componentExport";
 import { useAuth, useDataStore } from "../../contexts/contextExport";
 import { deleteLikeHandler } from "../../helperfunctions/likeHandler";
-import Watchlater from "../../images/Watchlater.svg";
 import Likedislike from "../../images/Likedislike.svg";
 import "./LikeVideoPage.css";
 
@@ -38,9 +36,10 @@ export const LikeVideoPage = () => {
           </div>
           <div className="fv-videos">
             {likedVideos.length >= 1 ? (
-              likedVideos.map((item) => {
+              likedVideos.map((item, index) => {
                 return (
                   <HorizontalVideoCard
+                    key={index}
                     deleteHandler={deleteLikeHandler}
                     videoItem={item}
                   />
