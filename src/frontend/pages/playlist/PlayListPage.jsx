@@ -19,27 +19,29 @@ export const PlayListPage = () => {
     !isLoggedIn && navigate("/login");
   }, [isLoggedIn]);
 
-  console.log("playlists ", playLists);
-
   return (
     <>
-      <section className="main-container">
-        <Sidebar />
-        {showModal && <PlaylistModal />}
-        <div className="content-area flex-dir-row">
-          <div className="video-grid">
-            {playLists?.length >= 1 ? (
-              playLists?.map((item, index) => (
-                <PlaylistCard key={index} playListItem={item} />
-              ))
-            ) : (
-              <div className="empty-div">
-                <p className="fs-lg">Empty playlist</p>
-                <Link to="/videolist" className="btn is-solid fs-btw-ml">
-                  Go to Watch Now
-                </Link>
+      <section className="main-wrapper">
+        <div className="main-container">
+          <Sidebar />
+          {showModal && <PlaylistModal />}
+          <div className="video-grid-container">
+            <div className="content-area flex-dir-row">
+              <div className="video-grid">
+                {playLists?.length >= 1 ? (
+                  playLists?.map((item, index) => (
+                    <PlaylistCard key={index} playListItem={item} />
+                  ))
+                ) : (
+                  <div className="empty-div">
+                    <p className="fs-lg">Empty playlist</p>
+                    <Link to="/videolist" className="btn is-solid fs-btw-ml">
+                      Go to Watch Now
+                    </Link>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>

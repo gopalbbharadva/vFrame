@@ -1,10 +1,17 @@
+.video-grid-container{
+  width: 100%;
+}
 .feature-video-grid {
   display: grid;
-  width: 100%;
-  grid-template-columns: minmax(0, 20%) minmax(0, 50%);
-  gap: 3rem;
+  grid-template-columns: 30% 60%;
+  gap: 1rem 3rem;
+  margin: auto;
+  max-width: 70rem;
   justify-content: center;
   align-items: flex-start;
+}
+.fv-info, .fv-videos{
+  margin-top: 2rem; 
 }
 .fv-intro-image {
   max-width: 10rem;
@@ -12,7 +19,7 @@
 
 @media screen and (max-width: 900px) {
   .feature-video-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
     margin: 1rem;
   }
   .fv-info {

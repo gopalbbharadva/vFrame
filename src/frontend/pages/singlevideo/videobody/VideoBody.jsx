@@ -28,7 +28,7 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
 
   return (
     <div className="video-description">
-      <p className="video-title fs-btn mg-vrtl-sm">{currentVideo.title}</p>
+      <p className="video-title fs-btw-ml mg-vrtl-sm">{currentVideo.title}</p>
       <ul className="feature-list">
         <li className="mg-sm">
           {currentVideo.isLiked && token ? (

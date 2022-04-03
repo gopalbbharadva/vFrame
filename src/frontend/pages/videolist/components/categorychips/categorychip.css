@@ -2,7 +2,7 @@
   border: 1px solid var(--Primary_Color);
   border-radius: 2rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 5px;
+  margin: 0 .5rem .5rem .5rem ;
 }
 .filled-chip {
   background-color: var(--Primary_Color);
