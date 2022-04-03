@@ -1,9 +1,13 @@
 import React from "react";
 import "./Hero.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import Bookhero from "../../../../images/Bookhero.svg";
+import { useDataStore } from "../../../../contexts/DataStoreContext";
 
 export const Hero = () => {
+  const { toastProps } = useDataStore();
+
   return (
     <section className="mg-xlg pd-md">
       <div className="hero-section">
@@ -16,7 +20,10 @@ export const Hero = () => {
             <span className="highlight-text">vFrame</span>.
           </p>
           <Link to="/videolist">
-            <button className="btn is-solid fs-lg bd-3 mg-vrtl-xlg">
+            <button
+              onClick={() => toast.success("Welcome to vFrame", toastProps)}
+              className="btn is-solid fs-lg bd-3 mg-vrtl-xlg"
+            >
               Watch Now
             </button>
           </Link>

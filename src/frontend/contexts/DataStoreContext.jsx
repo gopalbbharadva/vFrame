@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import { actionTypes } from "../reducers/actionTypes";
 import { dataStoreReducer } from "../reducers/dataReducer";
 import { getCategoryService, getVideoService } from "../services/dataService";
@@ -14,11 +20,26 @@ const initialState = {
   isInHistory: false,
 };
 
+const toastProps = {
+  position: "top-center",
+  duration: 2000,
+  style: {
+    fontSize: "1.2rem",
+    background: "#333",
+    color: "#fff",
+  },
+};
+
 const DataStoreProvider = ({ children }) => {
   const [dataStoreState, dataStoreDispatch] = useReducer(
     dataStoreReducer,
     initialState
   );
+  const [showLoader, setShowLoader] = useState(true);
+
+  setTimeout(() => {
+    setShowLoader(false);
+  }, 2500);
 
   useEffect(() => {
     (async () => {
@@ -53,7 +74,15 @@ const DataStoreProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataStoreContext.Provider value={{ dataStoreState, dataStoreDispatch }}>
+    <DataStoreContext.Provider
+      value={{
+        toastProps,
+        dataStoreState,
+        dataStoreDispatch,
+        showLoader,
+        setShowLoader,
+      }}
+    >
       {children}
     </DataStoreContext.Provider>
   );

@@ -9,7 +9,7 @@ import "./LikeVideoPage.css";
 export const LikeVideoPage = () => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const { dataStoreState } = useDataStore();
+  const { dataStoreState, toastProps } = useDataStore();
   const { videos } = dataStoreState;
   const likedVideos = videos?.filter((item) => item.isLiked);
 
@@ -40,6 +40,7 @@ export const LikeVideoPage = () => {
                 return (
                   <HorizontalVideoCard
                     key={index}
+                    toastProps={toastProps}
                     deleteHandler={deleteLikeHandler}
                     videoItem={item}
                   />

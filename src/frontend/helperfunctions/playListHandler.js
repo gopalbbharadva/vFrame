@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { actionTypes } from "../reducers/actionTypes";
 import {
   deletePlayListService,
@@ -33,7 +34,6 @@ export const postPlaylistHandler = async (
   e.preventDefault();
   try {
     const res = await postPlaylistService(token, playListTitle);
-    console.log("add service", res);
     if (res.status === 201) {
       playListDispatch({
         type: actionTypes.PLAYLIST_UPDATE,
@@ -52,7 +52,8 @@ export const postPlaylistHandler = async (
 export const deletePlayListHandler = async (
   token,
   playlistId,
-  playListDispatch
+  playListDispatch,
+  toastProps
 ) => {
   try {
     const res = await deletePlayListService(token, playlistId);
@@ -61,6 +62,7 @@ export const deletePlayListHandler = async (
         type: actionTypes.PLAYLIST_UPDATE,
         payload: res.data.playlists,
       });
+      toast("Removed playlist", toastProps);
     }
   } catch (error) {
     playListDispatch({
@@ -93,7 +95,8 @@ export const postPlayListVideoHandler = async (
   token,
   playListId,
   playListVideo,
-  playListDispatch
+  playListDispatch,
+  toastProps
 ) => {
   try {
     const res = await postPlayListVideoService(
@@ -101,12 +104,12 @@ export const postPlayListVideoHandler = async (
       playListId,
       playListVideo
     );
-    console.log("add video", res);
     if (res.status === 201) {
       playListDispatch({
         type: actionTypes.PLAYLIST_VIDEO_UPDATE,
         payload: res.data.playlist,
       });
+      toast.success("Video added to playlist", toastProps);
     }
   } catch (error) {
     playListDispatch({
@@ -121,15 +124,19 @@ export const deletePlayListVideoHandler = async (
   videoId,
   undefined,
   playListId,
-  playListDispatch
+  playListDispatch,
+  toastProps
 ) => {
   console.log(token, videoId, playListId);
   try {
     const res = await deletePlayListVideoService(token, videoId, playListId);
-    playListDispatch({
-      type: actionTypes.PLAYLIST_VIDEO_UPDATE,
-      payload: res.data.playlist,
-    });
+    if (res.status === 200) {
+      playListDispatch({
+        type: actionTypes.PLAYLIST_VIDEO_UPDATE,
+        payload: res.data.playlist,
+      });
+      toast("Removed video from playlist", toastProps);
+    }
   } catch (error) {
     playListDispatch({
       type: actionTypes.PLAYLIST_ERROR,

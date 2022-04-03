@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../contexts/contextExport";
+import { useAuth, useDataStore } from "../../../contexts/contextExport";
 import { loginHandler } from "../../../helperfunctions/authHandlers";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -13,6 +13,7 @@ export const LoginPage = () => {
   const { loginData } = authState;
   const navigate = useNavigate();
   const { passwordToggle, checkPasswordView } = useTogglePassword();
+  const { toastProps } = useDataStore();
 
   return (
     <>
@@ -22,7 +23,7 @@ export const LoginPage = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              loginHandler(authDispatch, setIsLoggedIn, navigate);
+              loginHandler(authDispatch, setIsLoggedIn, navigate, toastProps);
             }}
           >
             <div className="input-icon-container input-primary">

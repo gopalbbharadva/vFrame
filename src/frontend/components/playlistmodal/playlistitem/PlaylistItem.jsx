@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./playlistitem.css";
 import { usePlaylist } from "../../../contexts/PlaylistContext";
 import { useAuth } from "../../../contexts/AuthContext";
@@ -6,6 +6,7 @@ import {
   deletePlayListVideoHandler,
   postPlayListVideoHandler,
 } from "../../../helperfunctions/playListHandler";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const PlaylistItem = ({ playListVideo }) => {
   const { token } = useAuth();
@@ -14,6 +15,7 @@ export const PlaylistItem = ({ playListVideo }) => {
     playListState: { playLists },
     playListDispatch,
   } = usePlaylist();
+  const { toastProps } = useDataStore();
 
   const toggleVideo = (playListId, videos) => {
     videos?.find((item) => item._id === videoId)
@@ -23,13 +25,14 @@ export const PlaylistItem = ({ playListVideo }) => {
           undefined,
           playListId,
           playListDispatch,
-          videos
+          toastProps
         )
       : postPlayListVideoHandler(
           token,
           playListId,
           playListVideo,
-          playListDispatch
+          playListDispatch,
+          toastProps
         );
   };
 
@@ -58,4 +61,3 @@ export const PlaylistItem = ({ playListVideo }) => {
     </>
   );
 };
-// videos.some((item) => item._id === videoId)

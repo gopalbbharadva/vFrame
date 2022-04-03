@@ -10,6 +10,7 @@ export const HorizontalVideoCard = ({
   videoItem,
   deleteHandler,
   playListId,
+  toastProps,
 }) => {
   const { _id: videoId, title, channel, duration } = videoItem;
   const imgSrc = getImageUrl(videoId);
@@ -37,7 +38,8 @@ export const HorizontalVideoCard = ({
                 videoId,
                 dataStoreDispatch,
                 playListId,
-                playListDispatch
+                playListDispatch,
+                toastProps
               )
             }
           />

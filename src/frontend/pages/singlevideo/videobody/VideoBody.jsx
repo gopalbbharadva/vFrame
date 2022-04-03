@@ -19,7 +19,7 @@ import {
 
 export const VideoBody = ({ currentVideo, setShowModal }) => {
   const { token } = useAuth();
-  const { dataStoreDispatch } = useDataStore();
+  const { dataStoreDispatch, toastProps } = useDataStore();
   const navigate = useNavigate();
 
   const checkLogin = () => {
@@ -34,7 +34,14 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
           {currentVideo.isLiked && token ? (
             <button
               onClick={() =>
-                deleteLikeHandler(token, currentVideo._id, dataStoreDispatch)
+                deleteLikeHandler(
+                  token,
+                  currentVideo._id,
+                  dataStoreDispatch,
+                  undefined,
+                  undefined,
+                  toastProps
+                )
               }
               className=" flex-center flex-dir-col bg-transparent "
             >
@@ -48,7 +55,8 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
                   token,
                   currentVideo,
                   dataStoreDispatch,
-                  navigate
+                  navigate,
+                  toastProps
                 )
               }
               className="flex-center flex-dir-col bg-transparent"
@@ -66,7 +74,9 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
                   token,
                   currentVideo._id,
                   dataStoreDispatch,
-                  navigate
+                  undefined,
+                  undefined,
+                  toastProps
                 )
               }
               className=" flex-center flex-dir-col bg-transparent "
@@ -81,7 +91,8 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
                   token,
                   currentVideo,
                   dataStoreDispatch,
-                  navigate
+                  navigate,
+                  toastProps
                 )
               }
               className=" flex-center flex-dir-col bg-transparent "

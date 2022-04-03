@@ -29,7 +29,7 @@ export const VideoCard = ({ videoItem }) => {
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { token } = useAuth();
-  const { dataStoreDispatch } = useDataStore();
+  const { dataStoreDispatch, toastProps } = useDataStore();
   const navigate = useNavigate();
 
   const domRef = useClickOutside(() => {
@@ -57,7 +57,7 @@ export const VideoCard = ({ videoItem }) => {
         <Link
           to={`/videolist/${videoId}`}
           onClick={() =>
-            postHistoryHandler(token, videoItem, dataStoreDispatch)
+            postHistoryHandler(token, videoItem, dataStoreDispatch, toastProps)
           }
         >
           <div className="image-container">
@@ -89,7 +89,8 @@ export const VideoCard = ({ videoItem }) => {
                           token,
                           videoItem,
                           dataStoreDispatch,
-                          navigate
+                          navigate,
+                          toastProps
                         )
                       }
                     >
@@ -103,7 +104,10 @@ export const VideoCard = ({ videoItem }) => {
                         deleteWatchLaterHandler(
                           token,
                           videoItem._id,
-                          dataStoreDispatch
+                          dataStoreDispatch,
+                          undefined,
+                          undefined,
+                          toastProps
                         )
                       }
                     >

@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { actionTypes } from "../reducers/actionTypes";
 import {
   deleteLikeService,
@@ -8,7 +9,6 @@ import {
 export const getLikeHandler = async (token, dataStoreDispatch) => {
   try {
     const res = await getLikeService(token);
-    console.log('like res',res.data.likes)
     if (res.status === 200) {
       dataStoreDispatch({
         type: actionTypes.LIKE_VIDEO,
@@ -27,7 +27,8 @@ export const postLikeHandler = async (
   token,
   videoItem,
   dataStoreDispatch,
-  navigate
+  navigate,
+  toastProps
 ) => {
   if (!token) {
     navigate("/login");
@@ -39,6 +40,7 @@ export const postLikeHandler = async (
           type: actionTypes.LIKE_VIDEO,
           payload: res.data.likes,
         });
+        toast.success("Saved to Liked Videos", toastProps);
       }
     } catch (error) {
       dataStoreDispatch({
@@ -49,7 +51,14 @@ export const postLikeHandler = async (
   }
 };
 
-export const deleteLikeHandler = async (token, videoId, dataStoreDispatch) => {
+export const deleteLikeHandler = async (
+  token,
+  videoId,
+  dataStoreDispatch,
+  skip1,
+  skip2,
+  toastProps
+) => {
   try {
     const res = await deleteLikeService(token, videoId);
     if (res.status === 200) {
@@ -57,6 +66,7 @@ export const deleteLikeHandler = async (token, videoId, dataStoreDispatch) => {
         type: actionTypes.LIKE_VIDEO,
         payload: res.data.likes,
       });
+      toast("Removed from Liked Videos", toastProps);
     }
   } catch (error) {
     dataStoreDispatch({
