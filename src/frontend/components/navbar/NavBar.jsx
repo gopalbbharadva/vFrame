@@ -1,28 +1,26 @@
 import React, { useState } from "react";
+import "./Navbar.css";
 import { FiSearch, FiLogIn, FiLogOut, FiMenu } from "react-icons/fi";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { ImPlay } from "react-icons/im";
-import { VscClose } from "react-icons/vsc";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   useAuth,
   usePlaylist,
   useDataStore,
+  useFilter,
 } from "../../contexts/contextExport";
 import { logoutHandler } from "../../helperfunctions/authHandlers";
 import { setActiveLink } from "../../helperfunctions/setActieLink";
-import { useClickOutside } from "../../Hooks/useClickOutside";
 import { ToggleNavbar } from "../ToggleNavigationBar/ToggleNavbar";
-import "./Navbar.css";
+import { actionTypes } from "../../reducers/actionTypes";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const { playListDispatch } = usePlaylist();
-  const { dataStoreDispatch, toastProps } = useDataStore();
+  const { dataStoreDispatch, toastProps, setSearchText } = useDataStore();
   const navigate = useNavigate();
-
-  
+  const { filterDispatch } = useFilter();
 
   return (
     <nav className="navigation pd-md">
@@ -48,14 +46,22 @@ export const Navbar = () => {
           </NavLink>
         </div>
       </div>
-      <div className="search-bar">
+      <div className="search-bar flex-center">
         <span className="searchbox-icon">
           <FiSearch />
         </span>
         <input
           className="search-input"
           type="text"
-          placeholder="Search book..."
+          onChange={(e) => {
+            navigate("/videolist");
+            filterDispatch({
+              type: actionTypes.SET_DEFAULT_CATEGORY,
+              payload: { category: "All" },
+            });
+            setSearchText(e.target.value);
+          }}
+          placeholder="Search video..."
         />
       </div>
       <div className="nav-right-section">

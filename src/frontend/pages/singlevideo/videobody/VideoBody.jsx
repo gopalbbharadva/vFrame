@@ -30,7 +30,7 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
     <div className="video-description">
       <p className="video-title fs-btw-ml mg-vrtl-sm">{currentVideo.title}</p>
       <ul className="feature-list">
-        <li className="mg-sm">
+        <li>
           {currentVideo.isLiked && token ? (
             <button
               onClick={() =>

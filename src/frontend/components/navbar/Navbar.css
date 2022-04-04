@@ -28,11 +28,11 @@
 .search-input {
   width: 100%;
 }
-.search-icon {
-  padding: 0;
-}
 .search-bar {
   max-width: 20rem;
+}
+.searchbox-icon{
+  align-self: center;
 }
 .clr-white{
   color: var(--Color_White);
