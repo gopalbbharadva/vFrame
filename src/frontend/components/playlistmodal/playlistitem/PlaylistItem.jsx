@@ -1,12 +1,14 @@
 import React from "react";
 import "./playlistitem.css";
-import { usePlaylist } from "../../../contexts/PlaylistContext";
-import { useAuth } from "../../../contexts/AuthContext";
+import {
+  usePlaylist,
+  useAuth,
+  useDataStore,
+} from "../../../contexts/contextExport";
 import {
   deletePlayListVideoHandler,
   postPlayListVideoHandler,
 } from "../../../helperfunctions/playListHandler";
-import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const PlaylistItem = ({ playListVideo }) => {
   const { token } = useAuth();

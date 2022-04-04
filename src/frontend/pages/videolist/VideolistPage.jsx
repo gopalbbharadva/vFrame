@@ -16,18 +16,20 @@ export const VideolistPage = () => {
     <>
       <section className="main-container">
         <Sidebar />
-        <div className="content-area">
-          <div className="category-area">
-            {categories.map((item, index) => (
-              <CategoryChip videoCategory={item} key={index} />
-            ))}
-          </div>
-          <div className="video-grid ">
-            {(category === "All" ? videos : filteredVideos).map(
-              (item, index) => (
-                <VideoCard videoItem={item} key={index} />
-              )
-            )}
+        <div className="video-grid-container">
+          <div className="content-area">
+            <div className="category-area">
+              {categories.map((item, index) => (
+                <CategoryChip videoCategory={item} key={index} />
+              ))}
+            </div>
+            <div className="video-grid ">
+              {(category === "All" ? videos : filteredVideos).map(
+                (item, index) => (
+                  <VideoCard videoItem={item} key={index} />
+                )
+              )}
+            </div>
           </div>
         </div>
       </section>

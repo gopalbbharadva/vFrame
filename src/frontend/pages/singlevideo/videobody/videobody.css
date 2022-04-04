@@ -9,7 +9,7 @@
   font-weight: 300;
 }
 .filled-like {
-  color: var(--Color_Danger_500);
+  color: var(--Primary_Color);
 }
 .filled-watch-later {
   color: var(--Primary_Color);

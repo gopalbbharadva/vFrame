@@ -2,10 +2,12 @@
   box-shadow: var(--navbar_shadow);
   justify-content: space-between;
 }
+
 .secondary-list {
   padding: 0 20px;
 }
 .logo-text {
+  user-select: none;
   margin-left: 1rem;
   color: var(--Primary_Color);
   font-family: var(--Logo_Font);
@@ -15,7 +17,6 @@
   margin-left: 3rem;
   font-size: 1.25rem;
 }
-
 .nav-item {
   display: flex;
   flex-direction: column;
@@ -23,10 +24,6 @@
 }
 .nav-item:hover {
   color: var(--Primary_Color);
-}
-.searchbox-icon {
-  display: flex;
-  color: var(--Secondary_Color);
 }
 .search-input {
   width: 100%;
@@ -36,4 +33,26 @@
 }
 .search-bar {
   max-width: 20rem;
+}
+.clr-white{
+  color: var(--Color_White);
+}
+
+@media screen and (max-width:615px){
+  .search-bar{
+    position: absolute;
+    top: 4.3rem;
+    max-width: 95%;
+    left: 0;
+    display: flex;
+  }
+  .hamburger-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quick-link,
+  .nav-right-section{
+    display: none;
+  }
 }

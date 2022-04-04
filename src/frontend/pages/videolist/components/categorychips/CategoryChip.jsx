@@ -14,7 +14,7 @@ export const CategoryChip = ({ videoCategory }) => {
         onClick={() => filterByCategory(categoryName, filterDispatch)}
         className={`chip-item ${
           categoryName === category && "filled-chip"
-        } flex-center pointer mg-hztl-sm`}
+        } flex-center pointer`}
       >
         <p>{categoryName}</p>
       </div>
