@@ -36,6 +36,7 @@ const DataStoreProvider = ({ children }) => {
     initialState
   );
   const [showLoader, setShowLoader] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   setTimeout(() => {
     setShowLoader(false);
@@ -81,6 +82,8 @@ const DataStoreProvider = ({ children }) => {
         dataStoreDispatch,
         showLoader,
         setShowLoader,
+        searchText,
+        setSearchText,
       }}
     >
       {children}

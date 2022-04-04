@@ -4,7 +4,7 @@ import { filterReducer } from "../reducers/filterReducer";
 const FilterContext = createContext();
 
 const initialState = {
-  category: "All",
+  category: "",
 };
 
 const FilterProvider = ({ children }) => {

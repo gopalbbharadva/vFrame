@@ -22,6 +22,12 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.feature-list li{
+  margin: 5px 16px 5px 0;
+}
+.feature-list button{
+  padding: 0;
+}
 .feature-list li:hover {
   color: var(--Primary_Color);
   cursor: pointer;
