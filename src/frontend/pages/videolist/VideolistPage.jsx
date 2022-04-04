@@ -27,7 +27,7 @@ export const VideolistPage = () => {
       : videos.filter((item) => item.category === category);
 
   const filterBySearchVideos = filteredVideos.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
+    item.title.toLowerCase().includes(searchText.trim().toLowerCase())
   );
 
   return (

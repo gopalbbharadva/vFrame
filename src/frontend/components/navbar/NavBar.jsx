@@ -7,18 +7,20 @@ import {
   useAuth,
   usePlaylist,
   useDataStore,
+  useFilter,
 } from "../../contexts/contextExport";
 import { logoutHandler } from "../../helperfunctions/authHandlers";
 import { setActiveLink } from "../../helperfunctions/setActieLink";
 import { ToggleNavbar } from "../ToggleNavigationBar/ToggleNavbar";
+import { actionTypes } from "../../reducers/actionTypes";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const { playListDispatch } = usePlaylist();
-  const { dataStoreDispatch, toastProps, setSearchText, searchText } =
-    useDataStore();
+  const { dataStoreDispatch, toastProps, setSearchText } = useDataStore();
   const navigate = useNavigate();
+  const { filterDispatch } = useFilter();
 
   return (
     <nav className="navigation pd-md">
@@ -53,6 +55,10 @@ export const Navbar = () => {
           type="text"
           onChange={(e) => {
             navigate("/videolist");
+            filterDispatch({
+              type: actionTypes.SET_DEFAULT_CATEGORY,
+              payload: { category: "All" },
+            });
             setSearchText(e.target.value);
           }}
           placeholder="Search video..."
