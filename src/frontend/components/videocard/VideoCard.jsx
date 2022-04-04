@@ -116,7 +116,7 @@ export const VideoCard = ({ videoItem }) => {
                     </button>
                   )}
                 </li>
-                <li className="menu-item mg-top flex-center">
+                <li className="menu-item flex-center">
                   <button className="flex-center" onClick={checkLogin}>
                     <MdPlaylistPlay className="fs-md mg-r" />
                     Save to Playlist
