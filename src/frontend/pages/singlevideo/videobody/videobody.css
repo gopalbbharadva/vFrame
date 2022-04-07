@@ -6,7 +6,7 @@
 }
 .video-title {
   font-family: var(--Lato_Font);
-  font-weight: 300;
+  font-weight: 500;
 }
 .filled-like {
   color: var(--Primary_Color);

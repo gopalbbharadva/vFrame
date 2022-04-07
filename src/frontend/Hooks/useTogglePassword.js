@@ -6,6 +6,11 @@ const useTogglePassword = () => {
     isEyeIcon: false,
   });
 
+  const [confirmPasswordToggle, setConfirmPasswordToggle] = useState({
+    type: "password",
+    isEyeIcon: false,
+  });
+
   const checkPasswordView = () => {
     passwordToggle.isEyeIcon
       ? setPasswordToggle({
@@ -15,9 +20,20 @@ const useTogglePassword = () => {
       : setPasswordToggle({ isEyeIcon: true, type: "text" });
   };
 
+  const checkConfirmPasswordView = () => {
+    confirmPasswordToggle.isEyeIcon
+      ? setConfirmPasswordToggle({
+          isEyeIcon: false,
+          type: "password",
+        })
+      : setConfirmPasswordToggle({ isEyeIcon: true, type: "text" });
+  };
+
   return {
     passwordToggle,
     checkPasswordView,
+    confirmPasswordToggle,
+    checkConfirmPasswordView,
   };
 };
 

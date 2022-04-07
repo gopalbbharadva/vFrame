@@ -6,3 +6,7 @@ export const loginService = () => {
     password: "adarshBalika123",
   });
 };
+
+export const signUpservice = (formData) => {
+  return axios.post("/api/auth/signup", formData);
+};

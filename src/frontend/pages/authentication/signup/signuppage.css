@@ -1,34 +1,46 @@
-.login-card {
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-card {
   background-color: var(--Color_White);
-  width: 25rem;
-  max-width: 100%;
+  max-width: 25rem;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: stretch;
-  margin-top: 5rem;
+  margin: 5rem;
   padding: 0.5rem 1.5rem 1rem;
   box-shadow: RGBA(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.btn-area {
-  display: flex;
-  flex-direction: column;
+.is-solid:disabled {
+  background-color: var(--Secondary_Border_Color);
+  color: var(--Secondary_Color);
+  cursor: not-allowed;
 }
-.is-secondary {
-  background-color: var(--Secondary_Color);
-  color: var(--Color_White);
+.error-msg {
+  color: var(--Color_Danger_500);
 }
-.is-secondary:hover {
-  background-color: var(--Secondary_Hover_Color);
-}
-.text-login {
+.text-signup {
   margin: 1rem 0;
   text-align: center;
   font-size: 2rem;
 }
-.input-icon-container {
-  margin: 10px 0;
-  padding: 0 1rem;
+.name-section {
+  display: flex;
+  gap: 20px;
+}
+.name-section .input {
+  width: 90%;
+}
+.input-icon-container-su {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border-radius: 3px;
+  padding: 0;
 }
 .input-primary {
   border: 2px solid var(--Primary_Color);
@@ -37,18 +49,14 @@
   text-align: center;
   font-size: 1.25rem;
 }
-.auth-link {
-  color: var(--Primary_Color);
-}
 .horizontal-div {
   margin: 0.5rem 0;
   justify-content: space-between;
   display: flex;
 }
-.horizontal-div label {
-  user-select: none;
+.btn {
+  margin-right: 0;
 }
-
 .input-icon {
   font-size: 1.2rem;
 }
@@ -63,11 +71,17 @@
   font-size: 1rem;
   color: var(--Primary_Color);
 }
-.forgot-link:hover {
-  color: var(--Color_Black);
-}
 .input {
-  width: 90%;
+  width: 95%;
   outline: none;
   margin: 0;
+}
+.mg-top {
+  margin-top: 10px;
+}
+.mr {
+  margin-right: 5px;
+}
+.wd-100 {
+  width: 100%;
 }

@@ -9,9 +9,12 @@ import {
   PlayListPage,
   HistoryPage,
   WatchLaterPage,
+  SignupPage,
 } from "../../pages/pageExport";
 import { PlayListVideosPage } from "../../pages/PlayListVideos/PlayListVideosPage";
+import { Profile } from "../../pages/Profile/Profile";
 import { SingleVideo } from "../../pages/singlevideo/SingleVideo";
+import { ProfileCard, Settings } from "../../pages/Profile/profilePageExport";
 
 export const Approute = () => {
   return (
@@ -19,6 +22,7 @@ export const Approute = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/videolist" element={<VideolistPage />} />
         <Route path="/playlist" element={<PlayListPage />} />
         <Route path="/likes" element={<LikeVideoPage />} />
@@ -30,6 +34,10 @@ export const Approute = () => {
           path="/playlist/:playListId"
           element={<PlayListVideosPage />}
         ></Route>
+        <Route path="/profile/" element={<Profile />}>
+          <Route path="" element={<ProfileCard />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
     </>
   );

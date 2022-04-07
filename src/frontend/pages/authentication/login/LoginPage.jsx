@@ -9,7 +9,7 @@ import "./loginpage.css";
 import { actionTypes } from "../../../reducers/actionTypes";
 
 export const LoginPage = () => {
-  const { authState, authDispatch, setIsLoggedIn } = useAuth();
+  const { authState, authDispatch, setToken, setCurrentUser } = useAuth();
   const { loginData } = authState;
   const navigate = useNavigate();
   const { passwordToggle, checkPasswordView } = useTogglePassword();
@@ -19,11 +19,17 @@ export const LoginPage = () => {
     <>
       <div className="flex-center">
         <div className="login-card">
-          <h1 className="text-login">Login</h1>
+          <p className="text-login fs-lg">Login</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              loginHandler(authDispatch, setIsLoggedIn, navigate, toastProps);
+              loginHandler(
+                authDispatch,
+                navigate,
+                toastProps,
+                setToken,
+                setCurrentUser
+              );
             }}
           >
             <div className="input-icon-container input-primary">
@@ -74,7 +80,7 @@ export const LoginPage = () => {
                 <input id="remember-me" type="checkbox" />
                 Remember me
               </label>
-              <a className="forgot-link cursor">Forgot Password?</a>
+              <a className="forgot-link pointer">Forgot Password?</a>
             </div>
             <div className="btn-area">
               <button className="btn is-secondary">
