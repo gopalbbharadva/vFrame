@@ -20,8 +20,10 @@ export const NoteForm = () => {
           className="input-primary pd-sm bd-3 fs-md mg-top"
         ></textarea>
         <div>
-          <button className="btn is-solid ">Save</button>
-          <button className="btn is-primary is-outline ">Discard</button>
+          <button className="btn is-solid  ">Save</button>
+          <button className="btn is-primary is-outline mg-hztl-sm">
+            Discard
+          </button>
         </div>
       </form>
     </div>

@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { FiSearch, FiLogIn, FiLogOut, FiMenu } from "react-icons/fi";
+import { FiSearch, FiMenu, FiUser } from "react-icons/fi";
 import { ImPlay } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import {
-  useAuth,
-  usePlaylist,
-  useDataStore,
-  useFilter,
-} from "../../contexts/contextExport";
-import { logoutHandler } from "../../helperfunctions/authHandlers";
+import { useAuth, useDataStore, useFilter } from "../../contexts/contextExport";
 import { setActiveLink } from "../../helperfunctions/setActieLink";
 import { ToggleNavbar } from "../ToggleNavigationBar/ToggleNavbar";
 import { actionTypes } from "../../reducers/actionTypes";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const { playListDispatch } = usePlaylist();
-  const { dataStoreDispatch, toastProps, setSearchText } = useDataStore();
+  const { token } = useAuth();
+  const { setSearchText } = useDataStore();
   const navigate = useNavigate();
   const { filterDispatch } = useFilter();
 
@@ -65,19 +58,24 @@ export const Navbar = () => {
         />
       </div>
       <div className="nav-right-section">
-        {isLoggedIn ? (
-          <div
-            onClick={() =>
-              logoutHandler(
-                setIsLoggedIn,
-                navigate,
-                playListDispatch,
-                dataStoreDispatch,
-                toastProps
-              )
-            }
-            className="nav-item pointer"
-          >
+        {!token ? (
+          <Link to="/login">
+            <div className="nav-item nav-login-item">
+              <FiUser className="user-icon fs-lg" />
+              <small className="fs-md">Login</small>
+            </div>
+          </Link>
+        ) : (
+          <Link to="/profile/">
+            <div className="nav-item nav-login-item">
+              <FiUser className="user-icon cursor fs-lg" />
+              <small className="fs-md">Hi user</small>
+            </div>
+          </Link>
+        )}
+
+        {/* {isLoggedIn ? (
+          <div className="nav-item pointer">
             <FiLogOut className="user-icon fs-lg" />
             <small className="fs-md">Logout</small>
           </div>
@@ -88,8 +86,18 @@ export const Navbar = () => {
               <small className="fs-md">Login</small>
             </div>
           </Link>
-        )}
+        )} */}
       </div>
     </nav>
   );
 };
+
+// onClick={() =>
+//               logoutHandler(
+//                 setIsLoggedIn,
+//                 navigate,
+//                 playListDispatch,
+//                 dataStoreDispatch,
+//                 toastProps
+//               )
+//             }

@@ -69,8 +69,8 @@ export const VideoCard = ({ videoItem }) => {
           <ChannelAvatar channelImg={channelAvatar} />
           <div className="video-text mg-hztl-sm">
             <p className="video-title ">{title}</p>
-            <small className="video-channel-title mg-top">{channel}</small>
-            <small className="mg-top">{views} views</small>
+            <small className="video-channel-title mg-vrtl-sm">{channel}</small>
+            <small>{views} views</small>
           </div>
           <div ref={domRef} className="menu-area">
             <button

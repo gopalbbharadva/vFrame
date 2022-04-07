@@ -47,6 +47,7 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   font-family: var(--roboto-font);
+  font-weight: 500;
 }
 
 .menu-area {
@@ -73,6 +74,7 @@
   background: transparent;
   border: 0;
   display: flex;
+  align-items: center;
   opacity: 0.9;
 }
 .menu-item button:hover {

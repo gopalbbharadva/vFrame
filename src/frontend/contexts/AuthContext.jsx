@@ -11,15 +11,22 @@ const initialState = {
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
-  const loginToken = JSON.parse(localStorage.getItem("loginToken"));
-  const token = loginToken && loginToken.token;
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    loginToken && loginToken.isLoggedIn
-  );
+  const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
+  const [token, setToken] = useState(localStorageToken?.token || "");
+  const [currentUser, setCurrentUser] = useState(localStorageToken?.user || "");
+  const isLoggedIn = localStorageToken?.isLoggedIn || false;
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, authState, token, setIsLoggedIn, authDispatch }}
+      value={{
+        isLoggedIn,
+        authState,
+        token,
+        currentUser,
+        authDispatch,
+        setToken,
+        setCurrentUser,
+      }}
     >
       {children}
     </AuthContext.Provider>
