@@ -10,7 +10,7 @@ import { actionTypes } from "../../reducers/actionTypes";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { token } = useAuth();
+  const { token, currentUser } = useAuth();
   const { setSearchText } = useDataStore();
   const navigate = useNavigate();
   const { filterDispatch } = useFilter();
@@ -69,35 +69,11 @@ export const Navbar = () => {
           <Link to="/profile/">
             <div className="nav-item nav-login-item">
               <FiUser className="user-icon cursor fs-lg" />
-              <small className="fs-md">Hi user</small>
+              <small className="fs-md">Hi {currentUser.firstName}</small>
             </div>
           </Link>
         )}
-
-        {/* {isLoggedIn ? (
-          <div className="nav-item pointer">
-            <FiLogOut className="user-icon fs-lg" />
-            <small className="fs-md">Logout</small>
-          </div>
-        ) : (
-          <Link to="/login">
-            <div className="nav-item pointer">
-              <FiLogIn className="user-icon fs-lg" />
-              <small className="fs-md">Login</small>
-            </div>
-          </Link>
-        )} */}
       </div>
     </nav>
   );
 };
-
-// onClick={() =>
-//               logoutHandler(
-//                 setIsLoggedIn,
-//                 navigate,
-//                 playListDispatch,
-//                 dataStoreDispatch,
-//                 toastProps
-//               )
-//             }
