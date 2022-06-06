@@ -1,6 +1,9 @@
 .navigation {
   box-shadow: var(--navbar_shadow);
-  justify-content: space-between;
+  background-color: var(--Color_White);
+  position: sticky;
+  z-index: 2;
+  top: 0;
 }
 
 .secondary-list {
@@ -31,28 +34,28 @@
 .search-bar {
   max-width: 20rem;
 }
-.searchbox-icon{
+.searchbox-icon {
   align-self: center;
 }
-.clr-white{
+.clr-white {
   color: var(--Color_White);
 }
 
-@media screen and (max-width:615px){
-  .search-bar{
+@media screen and (max-width: 615px) {
+  .search-bar {
     position: absolute;
     top: 4.3rem;
     max-width: 95%;
     left: 0;
     display: flex;
   }
-  .hamburger-icon{
+  .hamburger-icon {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .quick-link,
-  .nav-right-section{
+  .nav-right-section {
     display: none;
   }
 }

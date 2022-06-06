@@ -3,9 +3,5 @@ import "./homepage.css";
 import { Hero } from "./components/heroSection/Hero";
 
 export const HomePage = () => {
-  return (
-    <div>
-      <Hero />
-    </div>
-  );
+  return <Hero />;
 };

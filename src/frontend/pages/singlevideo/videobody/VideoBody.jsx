@@ -111,12 +111,6 @@ export const VideoBody = ({ currentVideo, setShowModal }) => {
             <small>Play List</small>
           </button>
         </li>
-        <li className="mg-sm">
-          <button className="flex-center flex-dir-col bg-transparent">
-            <MdOutlineShare className="fs-lg" />
-            <small>Share</small>
-          </button>
-        </li>
       </ul>
     </div>
   );
