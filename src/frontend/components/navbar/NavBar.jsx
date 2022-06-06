@@ -15,6 +15,25 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { filterDispatch } = useFilter();
 
+  const searchProcess = (e) => {
+    navigate("/videolist");
+    filterDispatch({
+      type: actionTypes.SET_DEFAULT_CATEGORY,
+      payload: { category: "All" },
+    });
+    setSearchText(e.target.value);
+  };
+
+  const debounce = (callBack, delay) => {
+    let timer = null;
+    return (e) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => callBack(e), delay);
+    };
+  };
+
+  const searchHandler = debounce(searchProcess, 500);
+
   return (
     <nav className="navigation pd-md">
       {isOpen && <ToggleNavbar setIsOpen={setIsOpen} />}
@@ -40,20 +59,11 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="search-bar flex-center">
-        <span className="searchbox-icon">
-          <FiSearch />
-        </span>
+        <FiSearch />
         <input
           className="search-input"
           type="text"
-          onChange={(e) => {
-            navigate("/videolist");
-            filterDispatch({
-              type: actionTypes.SET_DEFAULT_CATEGORY,
-              payload: { category: "All" },
-            });
-            setSearchText(e.target.value);
-          }}
+          onChange={searchHandler}
           placeholder="Search video..."
         />
       </div>
