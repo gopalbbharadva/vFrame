@@ -1,12 +1,13 @@
 import React from "react";
 import "./Singlevideo.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PlaylistModal } from "../../components/playlistmodal/PlaylistModal";
 import { useDataStore, usePlaylist } from "../../contexts/contextExport";
-import { NoteForm } from "./components/note/NoteForm";
 import { VideoBody } from "./videobody/VideoBody";
 import { getVideo } from "../../helperfunctions/getVideo";
 import { useClickOutside } from "../../Hooks/useClickOutside";
+import { IoArrowBackSharp } from "react-icons/io5";
+import { VideoCard } from "../../components/componentExport";
 
 export const SingleVideo = () => {
   const {
@@ -23,10 +24,18 @@ export const SingleVideo = () => {
     setShowModal(false);
   });
 
+  const suggestedVideos = videos.filter(
+    (video) =>
+      video.category === currentVideo.category && video._id !== currentVideo._id
+  );
+
   return (
     <>
       <div className="video-area">
-        <div className="video-main pd-md">
+        <div className="video-main">
+          <Link to="/videolist">
+            <IoArrowBackSharp className="btn is-solid mg-vrtl-md bd-3 fs-btw-ml" />
+          </Link>
           <div className="video-container">
             <iframe
               className="video"
@@ -40,8 +49,14 @@ export const SingleVideo = () => {
           </div>
           <VideoBody setShowModal={setShowModal} currentVideo={currentVideo} />
         </div>
-        <NoteForm />
+        <div className="flex-center flex-dir-col mg-lg">
+          <p className="fs-lg primary-clr mg-vrtl-md">Suggestions</p>
+          {suggestedVideos?.map((video) => (
+            <VideoCard videoItem={video} />
+          ))}
+        </div>
       </div>
+
       {showModal && (
         <PlaylistModal
           modalRef={modalRef}

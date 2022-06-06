@@ -1,13 +1,19 @@
-.video-main{
-  margin-top: 2rem;
-}
 .video-area {
   display: grid;
   gap: 2rem 0;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 0 auto;
-  grid-template-columns: minmax(0,40rem) minmax(0,20rem);
+  grid-template-columns: minmax(0, 40rem) minmax(0, 20rem);
+  position: relative;
 }
+
+.video-main {
+  margin: 1rem;
+  align-self: flex-start;
+  position: sticky;
+  top: 5rem;
+}
+
 .video {
   height: 23rem;
 }
@@ -16,6 +22,9 @@
   .video-area {
     grid-template-columns: 1fr;
     margin: 1rem 0;
+  }
+  .video-main {
+    position: relative;
   }
   .video {
     height: 16rem;
