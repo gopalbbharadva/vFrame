@@ -38,10 +38,6 @@ const DataStoreProvider = ({ children }) => {
   const [showLoader, setShowLoader] = useState(true);
   const [searchText, setSearchText] = useState("");
 
-  setTimeout(() => {
-    setShowLoader(false);
-  }, 2500);
-
   useEffect(() => {
     (async () => {
       try {
