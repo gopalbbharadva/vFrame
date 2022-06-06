@@ -7,18 +7,18 @@ export const loginHandler = async (
   navigate,
   toastProps,
   setToken,
-  setCurrentUser
+  setCurrentUser,
+  location
 ) => {
   authDispatch({
     type: actionTypes.SET_DUMMY_DATA,
     payload: {
-      email: "adarshbalika@gmail.com",
-      password: "adarshBalika123",
+      email: "gopal123@gmail.com",
+      password: "Gopal@123",
     },
   });
   try {
     const res = await loginService();
-    console.log(res);
     if (res.status === 200) {
       localStorage.setItem(
         "loginToken",
@@ -28,10 +28,10 @@ export const loginHandler = async (
           isLoggedIn: true,
         })
       );
-      toast.success("User logged in!!", toastProps);
+      toast.success(`Hi ${res.data.foundUser.firstName}`, toastProps);
       setToken(res.data.encodedToken);
       setCurrentUser(res.data.foundUser);
-      navigate("/profile/");
+      navigate(location?.state?.from?.pathname, { replace: true });
       authDispatch({ type: actionTypes.CLEAR_FORM });
     } else {
       authDispatch({

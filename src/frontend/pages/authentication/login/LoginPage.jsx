@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useDataStore } from "../../../contexts/contextExport";
 import { loginHandler } from "../../../helperfunctions/authHandlers";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
@@ -14,6 +14,8 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const { passwordToggle, checkPasswordView } = useTogglePassword();
   const { toastProps } = useDataStore();
+  const location = useLocation();
+
 
   return (
     <>
@@ -28,7 +30,8 @@ export const LoginPage = () => {
                 navigate,
                 toastProps,
                 setToken,
-                setCurrentUser
+                setCurrentUser,
+                location
               );
             }}
           >
@@ -75,13 +78,7 @@ export const LoginPage = () => {
                 />
               )}
             </div>
-            <div className="horizontal-div">
-              <label className="cursor" htmlFor="remember-me">
-                <input id="remember-me" type="checkbox" />
-                Remember me
-              </label>
-              <a className="forgot-link pointer">Forgot Password?</a>
-            </div>
+            
             <div className="btn-area">
               <button className="btn is-secondary">
                 Login With Test Credentials.
