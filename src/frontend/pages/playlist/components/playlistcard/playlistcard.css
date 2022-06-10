@@ -1,4 +1,4 @@
-.pl-card-border{
+.pl-card-border {
   border: 1px solid var(--Color_Black);
   border-radius: 5px;
 }
@@ -10,6 +10,9 @@
   opacity: 0.7;
   background-color: var(--Color_Black);
   color: var(--Color_White);
+}
+.back-button {
+  margin: 0 7rem 1rem 0;
 }
 .pl-video-body {
   width: 90%;

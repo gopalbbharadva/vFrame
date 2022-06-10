@@ -1,7 +1,8 @@
 .sidebar {
   position: sticky;
-  top: 0;
-  left: 0;
+  top: 4.5rem;
+  /* position: fixed;
+  top: 0; */
   border-right: 1px solid var(--Primary_Color);
   height: calc(100vh - 6rem);
 }
@@ -13,15 +14,15 @@
   align-items: center;
   justify-content: space-between;
 }
-.sidebar-item{
+.sidebar-item {
   margin-bottom: 1.5rem;
 }
 .sidebar-item:hover {
   color: var(--Primary_Color);
 }
 
-@media screen  and (max-width:615px){
-  .sidebar{
+@media screen and (max-width: 615px) {
+  .sidebar {
     border: none;
     position: sticky;
     bottom: 0;
@@ -31,17 +32,17 @@
     margin-top: auto;
     height: max-content;
   }
-  .sidebar-list{
+  .sidebar-list {
     position: sticky;
     flex-direction: row;
     width: 100%;
     padding: 10px;
     background-color: var(--Color_White);
   }
-  .sidebar-item{
+  .sidebar-item {
     margin: 1rem;
   }
-  .sidebar-item small{
+  .sidebar-item small {
     display: none;
   }
 }

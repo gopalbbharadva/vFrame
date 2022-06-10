@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const loginService = () => {
   return axios.post("/api/auth/login", {
-    email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    email: "gopal123@gmail.com",
+    password: "Gopal@123",
   });
 };
 

@@ -38,14 +38,16 @@ export const HistoryPage = () => {
                   {historyVideos.length}
                   {historyVideos.length <= 1 ? " Video" : " Videos"}
                 </p>
-                <button
-                  onClick={() =>
-                    clearHistoryHandler(token, dataStoreDispatch, toastProps)
-                  }
-                  className="btn is-solid is-outline fs-btw-ml"
-                >
-                  Clear History
-                </button>
+                {historyVideos.length > 0 && (
+                  <button
+                    onClick={() =>
+                      clearHistoryHandler(token, dataStoreDispatch, toastProps)
+                    }
+                    className="btn is-solid is-outline fs-btw-ml"
+                  >
+                    Clear History
+                  </button>
+                )}
               </div>
               <div className="fv-videos">
                 {historyVideos.length >= 1 ? (

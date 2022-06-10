@@ -26,7 +26,7 @@ export const Settings = () => {
             setCurrentUser
           )
         }
-        className="btn is-solid fs-btw-ml"
+        className="btn is-solid"
       >
         Log Out
       </button>

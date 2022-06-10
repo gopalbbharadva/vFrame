@@ -6,3 +6,7 @@ export { HistoryPage } from "./history/HistoryPage";
 export { LikeVideoPage } from "./likes/LikeVideoPage";
 export { PlayListPage } from "./playlist/PlayListPage";
 export { WatchLaterPage } from "./watchlater/WatchLaterPage";
+export { NotFoundPage } from "./NotFound/NotFoundPage";
+export { PlayListVideosPage } from "./PlayListVideos/PlayListVideosPage";
+export { Profile } from "./Profile/Profile";
+export { SingleVideo } from "./singlevideo/SingleVideo";

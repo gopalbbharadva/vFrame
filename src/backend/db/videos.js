@@ -150,6 +150,19 @@ export const videos = [
     channelAvatar:
       "https://yt3.ggpht.com/ytc/AKedOLReLSP2eyS6CTA2f__cXzXijHd9EQyoY8LSKhE-=s88-c-k-c0x00ffffff-no-rj",
   },
+  {
+    _id: "anJFf9pN16g",
+    title: "THE MILLIONAIRE FASTLANE (BY MJ DEMARCO)",
+    category: "Money",
+    duration: "16:32",
+    description:
+      "In this video I will summarize my 5 greatest takeaways from MJ DeMarco’s The Millionaire Fastlane, a truly inspiring book that may be able to change the way you currently think about becoming wealthy.",
+    channel: "The Swedish Investor",
+    views: "431k",
+    uploadedAt: "June 6, 2020",
+    channelAvatar:
+      "https://yt3.ggpht.com/ytc/AKedOLReLSP2eyS6CTA2f__cXzXijHd9EQyoY8LSKhE-=s88-c-k-c0x00ffffff-no-rj",
+  },
   // relationship
   {
     _id: "knBJGNisJS0",
@@ -173,10 +186,36 @@ export const videos = [
     duration: "6:42",
     description:
       "Men Are from Mars, Women Are from Venus is a book written by American author and relationship counselor John Gray, after he had earned degrees in meditation and taken a correspondence course in psychology.",
-    channel: "Curious Ignorant",
+    channel: "One percent better",
     views: "295K",
     uploadedAt: "May 9, 2016",
     channelAvatar:
       "https://yt3.ggpht.com/ytc/AKedOLR40idC86MmrjRJmsiKX9OSdh2TJWbiEKW-w5B4=s88-c-k-c0x00ffffff-no-rj",
+  },
+  {
+    _id: "tRNpGsvzOlw",
+    title: "Attachment Theory Explained - Attached Animated Book Summary",
+    category: "Relationship",
+    duration: "13:08",
+    description:
+      "In this video I summarize the book Attached by Amir Levine and Rachel Heller in detail. I have been wanting to summarize this book for a long time. In fact, this was supposed to be the fourth video I uploaded! Better late than never. ",
+    channel: "Love Sense",
+    views: "106K",
+    uploadedAt: "May 15, 2019",
+    channelAvatar:
+      "https://yt3.ggpht.com/pku46lJJ1i94w_7r_M0IOwmVZhoRcy5PK9Mlh5QaQcte2bI-u5U_oqS8khAJX1x4XDNmQXJJXQ=s88-c-k-c0x00ffffff-no-rj",
+  },
+  {
+    _id: "acyt0zG77iE",
+    title: "Summary of All About Love by bell hooks | Free Audiobook",
+    category: "Relationship",
+    duration: "14:01",
+    description:
+      "This book summary is meant as a preview and not a replacement for the original work. If you like this summary please consider purchasing the original book to get the full experience as the original author intended it to be.",
+    channel: "QuickRead",
+    views: "7.5K",
+    uploadedAt: "October 23, 2020",
+    channelAvatar:
+      "https://yt3.ggpht.com/ytc/AKedOLSTqI86UHtgSiMQcNYqTCBlTWWPjJegWrNibtsq=s88-c-k-c0x00ffffff-no-rj",
   },
 ];

@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { usePlaylist, useDataStore } from "../../contexts/contextExport";
 import { HorizontalVideoCard } from "../../components/HorizontalVideoCard/HorizontalVideoCard";
 import { deletePlayListVideoHandler } from "../../helperfunctions/playListHandler";
+import { IoArrowBackSharp } from "react-icons/io5";
 
 export const PlayListVideosPage = () => {
   const { playListId } = useParams();
@@ -30,6 +31,12 @@ export const PlayListVideosPage = () => {
         <div className="video-grid-container">
           <div className="feature-video-grid ">
             <div className="fv-info flex-center flex-dir-col">
+              <Link to="/playlist" className="back-button">
+                <IoArrowBackSharp
+                  className="btn is-solid  
+                mg-vrtl-md bd-3 fs-btw-ml"
+                />
+              </Link>
               <img
                 src={Playlist}
                 className="fv-intro-image"
@@ -41,26 +48,28 @@ export const PlayListVideosPage = () => {
                 {videos.length <= 1 ? " Video" : " Videos"}
               </p>
             </div>
-            <div className="fv-videos">
-              {videos.length >= 1 ? (
-                videos.map((item) => {
-                  return (
-                    <HorizontalVideoCard
-                      toastProps={toastProps}
-                      deleteHandler={deletePlayListVideoHandler}
-                      videoItem={item}
-                      playListId={playListId}
-                    />
-                  );
-                })
-              ) : (
-                <div className="flex-center flex-dir-col">
-                  <p className="fs-lg">No videos in playlist</p>
-                  <Link to="/videolist" className="btn is-solid fs-btw-ml">
-                    Go to Watch Now
-                  </Link>
-                </div>
-              )}
+            <div>
+              <div className="fv-videos">
+                {videos.length >= 1 ? (
+                  videos.map((item) => {
+                    return (
+                      <HorizontalVideoCard
+                        toastProps={toastProps}
+                        deleteHandler={deletePlayListVideoHandler}
+                        videoItem={item}
+                        playListId={playListId}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className="flex-center flex-dir-col">
+                    <p className="fs-lg">No videos in playlist</p>
+                    <Link to="/videolist" className="btn is-solid fs-btw-ml">
+                      Go to Watch Now
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
